@@ -8,7 +8,7 @@ struct IndexedDict{K,V} <: Associative{K,V}
     function IndexedDict{V}(n::K) where K<:Integer where V
         valued = NBitSet(n)
         values = Vector{V}(n)
-        if V<:Numeric
+        if V<:Number
            values[:] = zero(V)
         elseif V<:String
            values[:] = ""
