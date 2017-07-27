@@ -21,7 +21,7 @@ function Base.setindex!(bitset::NBitSet{N}, value::Bool, index::I) where I where
     0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
     offset, bitidx = fldmod(index, 16)
     if value
-        bitset.value[offset+1] = bitset.value[offset+1] & (one(Int16) << bitidx)
+        bitset.value[offset+1] = bitset.value[offset+1] | (one(Int16) << bitidx)
     end
     return bitset
 end
