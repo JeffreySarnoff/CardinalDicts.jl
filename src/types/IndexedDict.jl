@@ -21,7 +21,7 @@ function Base.getindex(dict::IndexedDict{N,K,V}, key::K) where V where K<:Intege
     throw(ErrorException("Key (index) $(key) has not been given a value"))
 end
 
-function Base.setindex!(dict::IndexedDict{N,,K,V}, value::V, key::K) where V where K<:Integer where N
+function Base.setindex!(dict::IndexedDict{N,K,V}, value::V, key::K) where V where K<:Integer where N
     0 < key <= N || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(N)."))
     dict.values[key] = value
     return dict
