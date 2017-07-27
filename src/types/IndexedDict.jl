@@ -9,7 +9,7 @@ struct IndexedDict{N, K, V} <: Associative{K,V}
         n16 = n%Int16
         valued = NBitSet{n16}
         values = Vector{V1}(n16)
-        return new{N1,N1,V1}(valued, values)
+        return new{Int16,eltype(valued),V1}(valued, values)
     end
 end
 
