@@ -27,9 +27,16 @@ function Base.setindex!(bitset::NBitSet{N}, value::Bool, index::I) where I where
     return bitset
 end
 
-# module internal shortcut
+# module internal shortcuts
+
 function setindex!(bitset::NBitSet{N}, index::I) where I where N
     0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
+    offset, bitidx = fldmod(index%Int16, 16%Int16)
+    bitset.value[offset+One16] = bitset.value[offset+One16] | (One16 << (bitidx - One16))
+    return bitset
+end
+
+function unsafe_setindex!(bitset::NBitSet{N}, index::I) where I where N
     offset, bitidx = fldmod(index%Int16, 16%Int16)
     bitset.value[offset+One16] = bitset.value[offset+One16] | (One16 << (bitidx - One16))
     return bitset
