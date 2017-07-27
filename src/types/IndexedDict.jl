@@ -1,7 +1,7 @@
 include("NBitSets.jl")
 using .NBitSets
 
-struct IndexedDict{N, K, V} <: Associative{K,V} where V where K where N
+struct IndexedDict{N, K, V} where V where K where N<: Associative{K,V}
     valued::NBitSet{N}
     values::Vector{V}
     
