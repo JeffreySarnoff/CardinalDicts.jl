@@ -1,3 +1,8 @@
+module NBitSets
+
+export NBitSet,
+       unsafe_getidx, unsafe_setidx!
+
 struct NBitSet{N}
     value::Vector{Int16}
     
@@ -33,17 +38,16 @@ end
 
 # module internal shortcuts
 
-function fast_setindex!(bitset::NBitSet{N}, index::I) where I where N
-    0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
+function unsafe_getidx(bitset::NBitSet{N}, index::I) where I where N
+    offset, bitidx = bitdex(index%Int16)
+    return One16 === getbit(bitset.value[offset+One16], bitidx)
+ end
+
+function unsafe_setidx!(bitset::NBitSet{N}, index::I) where I where N
     offset, bitidx = bitdex(index%Int16)
     bitset.value[offset+One16] = setbit(bitset.value[offset+One16], bitidx)
     return bitset
 end
 
-function unsafe_fast_setindex!(bitset::NBitSet{N}, index::I) where I where N
-    offset, bitidx = bitdex(index%Int16)
-    bitset.value[offset+One16] = setbit(bitset.value[offset+One16], bitidx)
-    return bitset
-end
-
+end # module
 
