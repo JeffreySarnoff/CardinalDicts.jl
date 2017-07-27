@@ -5,10 +5,10 @@ struct IndexedDict{N, K, V} <: Associative{K,V}
     valued::NBitSet{N}
     values::Vector{V}
     
-    function IndexedDict{V1}(N1) where N1<:Integer
-        valued = NBitSet{N1}
-        values = Vector{V1}(N1)
-        return new{N1,typeof(N1),V1}(valued, values)
+    function IndexedDict{V1}(n::N1) where N1<:Integer where V1
+        valued = NBitSet{n}
+        values = Vector{V1}(n)
+        return new{N1,N1,V1}(valued, values)
     end
 end
 
