@@ -3,7 +3,7 @@ module NBitSets
 export NBitSet,
        unsafe_getidx, unsafe_setidx!
 
-@inline bitsof(::Type{T}} where T<:Integer = sizeof(T)<<3
+@inline bitsof(::Type{T}) where T<:Integer = sizeof(T)<<3
 
 struct NBitSet{T}
     value::Vector{T}
