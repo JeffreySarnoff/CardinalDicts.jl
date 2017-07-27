@@ -12,8 +12,8 @@ Base.length(bitset::NBitSet{N}) where N = N%Int16
 
 const One16 = one(Int16)
 
-@inline setbit(bits::Int16, index::Int16) = bits | (One16 << (index-One16))
-@inline getbit(bits::Int16, index::Int16) = (bits & (One16 << (index-One16))) !== zero(Int16)
+@inline setbit(bits::Int16, index::Int16)::Int16 = bits | (One16 << (index-One16))
+@inline getbit(bits::Int16, index::Int16)::Int16 = (bits & (One16 << (index-One16))) !== zero(Int16)
 
 function Base.getindex(bitset::NBitSet{N}, index::I) where I where N
     0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
