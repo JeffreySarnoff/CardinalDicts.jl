@@ -34,5 +34,5 @@ end
 
 #Base.get(collection, key, default)
 function Base.get(dict::IndexedDict{N, K, V}, key::K, default::V) where V where K where N
-    return haskey(dict, key) ? getindex(dict, key) : default
+    return haskey(dict, key) ? getindex(dict, key) : default # !!calls haskey twice -- FIXME !!
 end
