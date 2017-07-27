@@ -3,12 +3,14 @@ module NBitSets
 export NBitSet,
        unsafe_getidx, unsafe_setidx!
 
+@inline bitsof(T) where T<:Integer = sizeof(T)<<3
+
 struct NBitSet{T}
     value::Vector{T}
     
     function NBitSet(nbits::I) where I<:Integer
         nbits > typemax(I)>>2 && throw(ErrorException("An NBitSet{$(I)} is limited to $(typemax(I)>>2) bits."))
-        noftype = cld(nbits, sizeof(I)%I)
+        noftype = cld(nbits, bitsof(I)%I)
         zeroed  = zeros(I, noftype)
         return new{I}(zeroed)
     end
@@ -16,13 +18,8 @@ end
 
 Base.length(bitset::NBitSet{N}) where N = N%Int16
 
-const One8  = one(Int8)
-const One16 = one(Int16)
-const One32 = one(Int32)
-const One64 = one(Int64)
-
 @inline function bitdex(index::I) where I<:Integer
-    offset, index = fldmod(index, sizeof(I)%I)
+    offset, index = fldmod(index, bitsof(I)%I)
     # offset = offset + one(I)
     return offset, index
 end
