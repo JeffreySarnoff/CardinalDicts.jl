@@ -6,7 +6,7 @@ keytype(dict::IndexedDict{K, V}) where K<:Integer where V = K
 Base.:(==)(a_dict::D, b_dict::D) where D<:IndexedDict{K,V} where K<:Integer where V =
     a_dict.values == b_dict.values
 
-Base.:(==)(a_dict::IndexedDict{K,V}, b_dict::IndexedDict{J,W}) where K<:Integer where J<:Integer where V where M =
+Base.:(==)(a_dict::IndexedDict{K,V}, b_dict::IndexedDict{J,W}) where K<:Integer where J<:Integer where V where W =
     false
 
 Base.keys(dict::IndexedDict{K,V}) where K<:Integer where V = one(K):length(dict)%K
