@@ -1,4 +1,4 @@
-# IndexedDict.jl
+# IndexedDicts.jl
 ## Fast fixed-size dictionary for keys that are indicies. 
 
 #### Copyright &copy;2017 by Jeffrey Sarnoff.  This material is made available under the MIT License.
