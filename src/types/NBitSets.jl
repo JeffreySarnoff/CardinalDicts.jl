@@ -9,16 +9,16 @@ struct NBitSet{N}
     end
 end
 
-Base.length(bitset::NBitSet{N}) where N<:Integer = N
-Base.typemax(bitset::NBitSet{N}) where N<:Integer = fldmod(N, 16)
+Base.length(bitset::NBitSet{N}) where N = N
+Base.typemax(bitset::NBitSet{N}) where N = fldmod(N, 16)
 
-function Base.getindex(bitset::NBitSet{N}, index::I) where I<:Integer where N<:Integer
+function Base.getindex(bitset::NBitSet{N}, index::I) where I where N
     0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
     offset, bitidx = fldmod(index, 16)
     return one(Int16) === (bitset[offset+1] >> 15-bitidx) & one(Int16)
 end
 
-function Base.setindex!(bitset::NBitSet{N}, value::Bool, index::I) where I<:Integer where N<:Integer
+function Base.setindex!(bitset::NBitSet{N}, value::Bool, index::I) where I where N
     0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
     offset, bitidx = fldmod(index, 16)
     if value
