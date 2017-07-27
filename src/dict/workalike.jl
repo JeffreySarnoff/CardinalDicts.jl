@@ -6,9 +6,10 @@ keytype(dict::IndexedDict{N, K, V}) where V where K where N = K
 Base.:(==)(a_dict::D, b_dict::D) where D<:IndexedDict{N,K,V} where V where K where N =
     a_dict.values == b_dict.values
 
-Base.:(==)(a_dictIndexedDict{N, K, V}, b_dict{M, J,W}) where V where K where N where W where J where M = false
+Base.:(==)(a_dict::IndexedDict{N, K, V}, b_dict::IndexedDict{M, J,W}) where V where K where N where W where J where M =
+    false
 
-Base.keys(dict::IndexedDict{N, K, V}) where V where K where N = one(Int16):N%Int16
+Base.keys(dict::IndexedDict{N,K, V}) where V where K where::IndexedDict N = one(Int16):N%Int16
 
 function Base.values(dict::IndexedDict{N, K, V}) where V where K where N 
     result = Vector{V}()
