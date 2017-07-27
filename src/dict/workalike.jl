@@ -1,17 +1,17 @@
 
-Base.length(dict::IndexedDict{N, K, V}) where V where K where N = N
-Base.eltype(dict::IndexedDict{N, K, V}) where V where K where N = V
-keytype(dict::IndexedDict{N, K, V}) where V where K where N = K
+Base.length(dict::IndexedDict{K, V}) where K<:Integer where V = length(dict.values)
+Base.eltype(dict::IndexedDict{K, V}) where K<:Integer where V = V
+keytype(dict::IndexedDict{K, V}) where K<:Integer where V = K
 
-Base.:(==)(a_dict::D, b_dict::D) where D<:IndexedDict{N,K,V} where V where K where N =
+Base.:(==)(a_dict::D, b_dict::D) where D<:IndexedDict{K,V} where K<:Integer where V =
     a_dict.values == b_dict.values
 
-Base.:(==)(a_dict::IndexedDict{N, K, V}, b_dict::IndexedDict{M, J,W}) where V where K where N where W where J where M =
+Base.:(==)(a_dict::IndexedDict{K,V}, b_dict::IndexedDict{J,W}) where K<:Integer where J<:Integer where V where M =
     false
 
-Base.keys(dict::IndexedDict{N,K, V}) where V where K where N = one(Int16):N%Int16
+Base.keys(dict::IndexedDict{K,V}) where K<:Integer where V = one(K):length(dict)%K
 
-function Base.values(dict::IndexedDict{N, K, V}) where V where K where N 
+function Base.values(dict::IndexedDict{K,V}) where K<:Integer where V 
     result = Vector{V}()
     for i in keys
         if haskey(dict, i)
@@ -35,6 +35,6 @@ function Base.done(dict::IndexedDict, state)
 end
 
 #Base.get(collection, key, default)
-function Base.get(dict::IndexedDict{N, K, V}, key::K, default::V) where V where K where N
+function Base.get(dict::IndexedDict{K,V}, key::K, default::V) where K<:Integer where V
     return haskey(dict, key) ? getindex(dict, key) : default # !!calls haskey twice -- FIXME !!
 end
