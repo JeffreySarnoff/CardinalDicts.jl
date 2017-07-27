@@ -20,7 +20,7 @@ struct IndexedDict{K,V} <: Associative{K,V}
 end
 
 @inline function Base.haskey(dict::IndexedDict{K,V}, key::K) where K where V
-   getindex(dict.valued, key%Int16)
+   getindex(dict.valued, key)
 end
 
 function Base.getindex(dict::IndexedDict{K,V}, key::K) where K where V
@@ -29,7 +29,7 @@ function Base.getindex(dict::IndexedDict{K,V}, key::K) where K where V
 end
 
 function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where V
-    0 < key <= N || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(N)."))
+    0 < key <= N || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
     dict.values[key] = value
     return dict
 end
