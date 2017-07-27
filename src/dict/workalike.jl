@@ -34,7 +34,3 @@ function Base.done(dict::IndexedDict{K,V}, state) where K where V
     state[1] > length(dict)
 end
 
-#Base.get(collection, key, default)
-function Base.get(dict::IndexedDict{K,V}, key::K, default::V) where K where V
-    return haskey(dict, key) ? getindex(dict, key) : default # !!calls haskey twice -- FIXME !!
-end
