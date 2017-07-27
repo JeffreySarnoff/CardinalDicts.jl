@@ -1,7 +1,3 @@
-keyBase.eltype(dict::IndexedDict{N, K, V}) where V where K where N = V
-Base: ==, length, eltype,
-          start, next, done,
-          get, keys, values
 
 Base.length(dict::IndexedDict{N, K, V}) where V where K where N = N
 Base.eltype(dict::IndexedDict{N, K, V}) where V where K where N = V
@@ -34,4 +30,9 @@ end
 
 function Base.done(dict::IndexedDict, state)
     state[1] > length(dict)
+end
+
+#Base.get(collection, key, default)
+function Base.get(dict::IndexedDict{N, K, V}, key::K, default::V) where V where K where N
+    return haskey(dict, key) ? getindex(dict, key) : default
 end
