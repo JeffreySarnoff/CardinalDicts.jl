@@ -1,4 +1,4 @@
-include("NBitSet.jl")
+include("NBitSets.jl")
 
 struct IndexedDict{N, K<:Integer, V} <: Associative{K,V} where V where K where N
     valued::NBitSet{N}
