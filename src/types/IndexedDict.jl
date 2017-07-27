@@ -28,6 +28,14 @@ function Base.getindex(dict::IndexedDict{K,V}, key::K) where K where V
     throw(ErrorException("Key (index) $(key) has not been given a value"))
 end
 
+function Base.get(dict::IndexedDict{K,V}, key::K, default::V) where K where V
+    return haskey(dict, key) ? dict[key] : default
+end
+
+function Base.get(dict::IndexedDict{K,V}, key::K, default::S) where K where V where S
+    return haskey(dict, key) ? dict[key] : convert(V,default)
+end
+
 function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where V
     0 < key <= N || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
     dict.values[key] = value
