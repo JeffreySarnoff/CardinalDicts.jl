@@ -2,10 +2,10 @@ struct NBitSet{N}
     bitset::Vector{Int16}
     maxoffset::Int16
     
-    function NBitSet(N)
-        nInt16s = cld(N, 16)
+    function NBitSet(elements::E) where E<:Integer
+        nInt16s = cld(elements, 16)
         zeroed  = zeros(Int16, nInt16s)
-        return new{N}(zeroed, nInt16s)
+        return new{elements}(zeroed, nInt16s)
     end
 end
 
