@@ -3,7 +3,8 @@ Base.length(dict::IndexedDict{N, K, V}) where V where K where N = N
 Base.eltype(dict::IndexedDict{N, K, V}) where V where K where N = V
 keytype(dict::IndexedDict{N, K, V}) where V where K where N = K
 
-Base.:(==)(a_dict::D, b_dict::D) where V where K where N = a_dict.values == b_dict.values
+Base.:(==)(a_dict::D, b_dict::D) where D<:IndexedDict{N,K,V} where V where K where N =
+    a_dict.values == b_dict.values
 
 Base.:(==)(a_dictIndexedDict{N, K, V}, b_dict{M, J,W}) where V where K where N where W where J where M = false
 
