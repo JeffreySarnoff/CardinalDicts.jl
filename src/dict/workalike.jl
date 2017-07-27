@@ -25,7 +25,7 @@ function Base.start(dict::IndexedDict{K,V}) where K where V
     (1, keys(dict)) 
 end
 
-function Base.next(dict::{K,V}, state) where K where V
+function Base.next(dict::IndexedDict{K,V}, state) where K where V
     index, ks = state
     (ks[index], dict.values.values[index]), (index+1, ks)
 end
