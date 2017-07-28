@@ -28,6 +28,6 @@ function type_for_indexing(posint::T) where T<:Integer
 end
   
 include("IndexedDict.jl")
-include("dict_api.jl")
+include("dict_api_lite.jl")
 
 end # module
