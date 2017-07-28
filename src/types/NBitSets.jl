@@ -13,7 +13,7 @@ struct NBitSet{T}
         nbits > typemax(I)>>2 && throw(ErrorException("An NBitSet{$(I)} is limited to $(typemax(I)>>2) bits."))
         noftype = cld(nbits, bitsof(I)%I)
         zeroed  = zeros(I, noftype)
-        return new{I}(zeroed, noftype)
+        return new{I}(zeroed, nbits)
     end
 end
 
