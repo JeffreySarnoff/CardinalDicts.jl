@@ -30,11 +30,23 @@ end
 
 function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where V
     0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
-    dict.valued[key] = true
-    dict.values[key] = value
+    @inbounds begin
+        dict.valued[key] = true
+        dict.values[key] = value
+    end
     return dict
 end
 @inline Base.setindex!(dict::IndexedDict{K,V}, value::V, key::J) where J where K where V =
     setindex!(dict, value, convert(K,key))
+
+function clearindex!(dict::IndexedDict{K,V}, key::K) where K where V
+    0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
+    @inbounds dict.valued[key] = false
+    return dict
+end
+@inline clearindex!(dict::IndexedDict{K,V}, key::J) where J where K where V =
+    clearindex!(dict, convert(K,key))
+
+        
 
         
