@@ -37,7 +37,7 @@ function Base.get(dict::IndexedDict{K,V}, key::K, default::S) where K where V wh
 end
 
 function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where V
-    0 < key <= N || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
+    0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
     dict.values[key] = value
     return dict
 end
