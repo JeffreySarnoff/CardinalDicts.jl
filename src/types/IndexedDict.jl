@@ -12,15 +12,21 @@ end
 @inline function Base.haskey(dict::IndexedDict{K,V}, key::K) where K where V
    return getindex(dict.valued, key)
 end
+@inline Base.haskey(dict::IndexedDict{K,V}, key::J) where J where K where V =
+    getindex(dict.valued, convert(K,key))
 
 function Base.getindex(dict::IndexedDict{K,V}, key::K) where K where V
     haskey(dict, key) && return dict.values[key]
     throw(ErrorException("Key (index) $(key) has not been given a value"))
 end
+@inline Base.getindex(dict::IndexedDict{K,V}, key::J) where J where K where V =
+    getindex(dict.valued, convert(K,key))
 
 function Base.get(dict::IndexedDict{K,V}, key::K, default::V) where K where V
     return haskey(dict, key) ? dict.values[key] : default
 end
+@inline Base.get(dict::IndexedDict{K,V}, key::J, default::V) where J where K where V =
+    get(dict.valued, convert(K,key), default)
 
 function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where V
     0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
@@ -28,5 +34,7 @@ function Base.setindex!(dict::IndexedDict{K,V}, value::V, key::K) where K where 
     dict.values[key] = value
     return dict
 end
+@inline Base.setindex!(dict::IndexedDict{K,V}, value::V, key::J) where J where K where V =
+    setindex!(dict.valued, value, convert(K,key))
 
         
