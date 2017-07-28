@@ -16,7 +16,7 @@ struct NBitSet{T}
     end
 end
 
-Base.length(bitset::NBitSet{N}) where N = N%Int16
+Base.length(bitset::NBitSet{N}) where N = N
 
 @inline function bitdex(index::I) where I<:Integer
     offset, index = fldmod(index, bitsof(I)%I)
@@ -33,7 +33,7 @@ end
 #@inline getbit(bits::I, index::I)::I = (bits & (One16 << (index-One16))) !== zero(Int16)
 
 function Base.getindex(bitset::NBitSet{N}, index::I) where I where N
-    0 < index <= N || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
+    0 < index <= length(bitset) || throw(ErrorException("index $(index) is outside of the defined domain (1:$(N))")) 
     offset, bitidx = bitdex(index)
     return one(I) === getbit(bitset.value[offset+one(I)], bitidx)
  end
