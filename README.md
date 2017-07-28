@@ -26,8 +26,14 @@ julia> for i in 1:20                                 # setindex!(collection, val
            setindex!(FactorialDict, factorial(i), i) # FactorialDict[i] = convert(Int64, factorial(i))
         end;
         
+julia> haskey(FactorialDict, 17)
+true
 julia> FactorialDict[17]
 355_687_428_096_000
+
+julia> clearindex!(FactorialDict, 17)
+julia> haskey(FactorialDict, 17)
+false
 
 # FactorialDict[k] with k<1 or k>20  throws a DomainError
 ```
