@@ -51,36 +51,3 @@ julia> FactorialDict[2]
 1234
 ```
 ### dynamic valuation
-
-#### default
-```julia
-julia> using CardinalDict
-# create an CardinalDict with indices 1:255 that holds Symbols denoting possible states
-julia> const MAX_STATES = 255 # in real use, this would be in a module; not at global scope
-julia> StateCodes = CardinalDict{Symbol}(MAX_STATES)
-# create an CardinalDict with indices 1:2047 that holds keys to StatusCodes
-# this will store the first N (N<=2047) states that are reported while doing something
-julia> const MAX_TRACKED_STATES = 2047 # see prior "const" comment
-julia> StateDevelopment = CardinalDict{Int}(MAX_TRACKED_STATES)
-julia> nextstate = 1
-# run something that reports each state following a state change or the state at fixed intervals
-# with each report, while nextstate <= MAX_TRACKED_STATES
-# StateDevelopment[ nextstate ] = reported_state; nextstate += 1
-```
-
-#### pushing it
-```julia
-julia> using CardinalDict
-julia> const IndexingType = Int16; IndexType(n) = n%IndexingType
-# create an CardinalDict with indices 1:255 that holds Symbols denoting possible states
-julia> const MAX_STATES = 255 # in real use, this would be in a module; not at global scope
-julia> StateCodes = CardinalDict{Symbol}(IndexType(MAX_STATES))
-# create an CardinalDict with indices 1:2047 that holds keys to StatusCodes
-# this will store the first N (N<=2047) states that are reported while doing something
-julia> const MAX_TRACKED_STATES = 2047 # see prior "const" comment
-julia> StateDevelopment = CardinalDict{IndexingType}(IndexType(MAX_TRACKED_STATES))
-julia> nextstate = 1
-# run something that reports each state following a state change or the state at fixed intervals
-# with each report, while nextstate <= MAX_TRACKED_STATES
-# StateDevelopment[ nextstate ] = reported_state; nextstate += 1
-```
