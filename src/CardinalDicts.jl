@@ -1,10 +1,10 @@
-module IndexedDicts
+module CardinalDicts
 
-export IndexedDictonary,
+export CardinalDict,
        clearindex!
 
 include("for_indexing.jl")
-include("IndexedDict.jl")
+include("CardinalDict.jl")
 include("dict_api_lite.jl")
 
 end # module
