@@ -1,7 +1,3 @@
-include("NBitSets.jl")
-using .NBitSets
-
-
 struct IndexedDict{K,V} <: Associative{K,V}
     valued::BitArray{1}
     values::Vector{V}
