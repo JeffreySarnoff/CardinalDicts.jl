@@ -1,6 +1,7 @@
 module IndexedDicts
 
-export IndexedDictonary
+export IndexedDictonary,
+       clearindex
 
 include("for_indexing.jl")
 include("IndexedDict.jl")
