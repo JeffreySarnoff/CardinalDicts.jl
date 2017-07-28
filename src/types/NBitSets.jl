@@ -7,16 +7,17 @@ export NBitSet,
 
 struct NBitSet{T}
     value::Vector{T}
-    
+    nbits::T
+
     function NBitSet(nbits::I) where I<:Integer
         nbits > typemax(I)>>2 && throw(ErrorException("An NBitSet{$(I)} is limited to $(typemax(I)>>2) bits."))
         noftype = cld(nbits, bitsof(I)%I)
         zeroed  = zeros(I, noftype)
-        return new{I}(zeroed)
+        return new{I}(zeroed, noftype)
     end
 end
 
-Base.length(bitset::NBitSet{N}) where N = length(bitset.value)
+Base.length(bitset::NBitSet{N}) where N = bitset.nbits
 
 @inline function bitdex(index::I) where I<:Integer
     offset, index = fldmod(index, bitsof(I)%I)
