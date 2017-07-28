@@ -27,7 +27,7 @@ end
 #@inline bitdex(index::I)::I where I<:Integer = fldmod(index, sizeof(I)%I)
 
 @inline setbit(bits::I, index::I) where I<:Integer =  (bits | (one(I) << (index-one(I))))::I
-@inline getbit(bits::I, index::I) where I<:Integer = ((bits | (one(I) << (index-one(I)))) !== zero(i))::Bool
+@inline getbit(bits::I, index::I) where I<:Integer = ((bits | (one(I) << (index-one(I)))) !== zero(I))::Bool
 
 
 #@inline setbit(bits::I, index::I)::I where I<:Integer = bits | (one(I) << (index-one(I)))
