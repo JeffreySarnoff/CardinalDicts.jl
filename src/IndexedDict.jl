@@ -16,8 +16,8 @@ end
     getindex(dict, convert(K,key))
 
 function Base.getindex(dict::IndexedDict{K,V}, key::K) where K where V
-    haskey(dict, key) && return dict.values[key]
-    throw(ErrorException("Key (index) $(key) has not been given a value"))
+    haskey(dict, key) || throw(ErrorException("Key (index) $(key) has not been given a value"))
+    @inbounds return dict.values[key]
 end
 @inline Base.getindex(dict::IndexedDict{K,V}, key::J) where J where K where V =
     getindex(dict, convert(K,key))
