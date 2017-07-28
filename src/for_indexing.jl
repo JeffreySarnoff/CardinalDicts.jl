@@ -17,9 +17,10 @@ function bits_required(posint::T)::T where T<:Integer
     return bitsize - leading_zeros(posint)%T
 end
 
-const TypeForIndexing = [Int8, Int16, Int32, Int32, Int64, Int64, Int64, Int64, Int128 ]
+const TYPES_FOR_INDEXING = [Int8, Int16, Int32, Int32, Int64, Int64, Int64, Int64, Int128 ]
 
 function type_for_indexing(posint::T) where T<:Integer
-   type_index = nextpow2(bits_required(posint) + one(T)) >>> 3%T
-   return TypeForIndexing[ min(9%T, type_index) ]
+    type_index = nextpow2(bits_required(posint) + one(T)) >>> 3%T
+    indexingtype = TYPES_FOR_INDEXING[ min(9, type_index) ]
+    return indexingtype
 end
