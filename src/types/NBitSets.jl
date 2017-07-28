@@ -16,7 +16,7 @@ struct NBitSet{T}
     end
 end
 
-Base.length(bitset::NBitSet{N}) where N = N
+Base.length(bitset::NBitSet{N}) where N = length(bitset.value)
 
 @inline function bitdex(index::I) where I<:Integer
     offset, index = fldmod(index, bitsof(I)%I)
