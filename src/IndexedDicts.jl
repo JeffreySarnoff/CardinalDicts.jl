@@ -2,7 +2,7 @@ module IndexedDicts
 
 export IndexedDict
 
-function bitsof(::Type{T}) = sizeof(T) * 8
+bitsof(::Type{T}) where T = sizeof(T) * 8
 @inline function bitsof(::Type{T})::T where T<:Integer
     return sizeof(T)%T << (one(T)+one(T)+one(T))
 end
