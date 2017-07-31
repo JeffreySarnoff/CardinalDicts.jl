@@ -3,6 +3,8 @@ using Base.Test
 
 #=
   create an CardinalDict with indices 1:20 that holds Int64 values
+  check length
+  confirm keymax
   populate it
   use it
   unset an index
@@ -12,10 +14,15 @@ using Base.Test
 
 FactorialDict = CardinalDict{Int64}(20);
 
+@test length(FactorialDict) == 0
+@test keymax(FactorialDict) == 20
+
 for i in 1:20
     setindex!(FactorialDict, factorial(i), i)
 end
-        
+
+@test length(FactorialDict) == 20
+
 @test haskey(FactorialDict, 17) == true
 @test FactorialDict[17] == factorial(17)
 
