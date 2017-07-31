@@ -8,14 +8,23 @@ Base.:(==)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where K where V =
 Base.:(==)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where K where J where V where W =
     false
 
-Base.keys(dict::CardinalDict{K,V}) where K where V = one(K):length(dict)%K
+@inline keymax(dict::CardinalDict{K,V}) where K where V = length(dict.valued)%K
+
+function Base.keys(dict::CardinalDict{K,V}) where K where V
+    allkeys = one(K):keymax(dict)
+    result = Vector{K}()
+    for k in allkeys
+        if haskey(dict, i)
+            push!(result,k)
+        end
+    end
+    return result
+end
 
 function Base.values(dict::CardinalDict{K,V}) where K where V 
     result = Vector{V}()
     for i in keys(dict)
-        if haskey(dict, i)
-            push!(result, getindex(dict, i))
-        end
+        push!(result, getindex(dict, i))
     end
     return result
 end
