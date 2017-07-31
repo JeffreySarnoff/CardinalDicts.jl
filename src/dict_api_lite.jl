@@ -1,5 +1,5 @@
 # core
-Base.length(dict::CardinalDict{K, V}) where K where V = length(dict.values)
+Base.length(dict::CardinalDict{K, V}) where K where V = sum(dict.valued)
 
 Base.eltype(dict::CardinalDict{K, V}) where K where V = Pair{K,V}
 
