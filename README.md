@@ -18,7 +18,7 @@ Your favorite Dict functions should work.  If there is something you need which 
 
 ### lookup oft-used naturally sequenced values
 ```julia
-julia> using CardinalDict
+using CardinalDict
 
 # create an CardinalDict with indices 1:20 that holds Int64 values
 # populate it
@@ -27,27 +27,26 @@ julia> using CardinalDict
 # check it
 # change an indexed value
 
-julia> FactorialDict = CardinalDict{Int64}(20);
+FactorialDict = CardinalDict{Int64}(20);
 
-julia> for i in 1:20
-           setindex!(FactorialDict, factorial(i), i)
-        end;
+for i in 1:20
+    setindex!(FactorialDict, factorial(i), i)
+end
         
-julia> haskey(FactorialDict, 17)
+haskey(FactorialDict, 17)
 true
-julia> FactorialDict[17]
-355_687_428_096_000
+FactorialDict[17] == factorial(17)
+true
 
-julia> clearindex!(FactorialDict, 17)
-julia> haskey(FactorialDict, 17)
+clearindex!(FactorialDict, 17)
+haskey(FactorialDict, 17)
 false
-julia> get(FactorialDict, 17, 0)
+get(FactorialDict, 17, 0)
 0
 
-julia> FactorialDict[2]
-2
-julia> FactorialDict[2] = 1234
-julia> FactorialDict[2]
-1234
+FactorialDict[17] = factorial(17)
+get(FactorialDict, 17, 0) == factorial(17)
+true
+
+julia> using CardinalDict
 ```
-### dynamic valuation
