@@ -12,7 +12,7 @@ Base.keys(dict::CardinalDict{K,V}) where K where V = one(K):length(dict)%K
 
 function Base.values(dict::CardinalDict{K,V}) where K where V 
     result = Vector{V}()
-    for i in keys
+    for i in keys(dict)
         if haskey(dict, i)
             push(result, getindex(dict, i))
         end
