@@ -7,7 +7,7 @@ using Base.Test
   use it
   unset an index
   check it
-  change an indexed value
+  reassign an indexable value
 =#
 
 FactorialDict = CardinalDict{Int64}(20);
