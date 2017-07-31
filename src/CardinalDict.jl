@@ -14,7 +14,7 @@ end
    return getindex(dict.valued, key)
 end
 @inline Base.haskey(dict::CardinalDict{K,V}, key::J) where J where K where V =
-    getindex(dict, key%K)
+    haskey(dict, key%K)
 
 function Base.getindex(dict::CardinalDict{K,V}, key::K) where K where V
     haskey(dict, key) || throw(ErrorException("Key (index) $(key) has not been given a value"))
