@@ -14,7 +14,7 @@ function Base.keys(dict::CardinalDict{K,V}) where K where V
     allkeys = one(K):keymax(dict)
     result = Vector{K}()
     for k in allkeys
-        if haskey(dict, i)
+        if haskey(dict, k)
             push!(result,k)
         end
     end
