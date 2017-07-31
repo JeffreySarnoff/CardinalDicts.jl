@@ -14,7 +14,7 @@ function Base.values(dict::CardinalDict{K,V}) where K where V
     result = Vector{V}()
     for i in keys(dict)
         if haskey(dict, i)
-            push(result, getindex(dict, i))
+            push!(result, getindex(dict, i))
         end
     end
     return result
