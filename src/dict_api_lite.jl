@@ -32,7 +32,7 @@ end
 # iteration
 
 function Base.start(dict::CardinalDict{K,V}) where K where V
-    (1, keys(dict.values)) 
+    (1, keys(dict)) 
 end
 
 function Base.next(dict::CardinalDict{K,V}, state) where K where V
@@ -41,13 +41,17 @@ function Base.next(dict::CardinalDict{K,V}, state) where K where V
 end
 
 function Base.done(dict::CardinalDict{K,V}, state) where K where V
-    state[1] > length(dict.values)
+    state[1] > length(dict)
 end
 
 # string, io
 
 function Base.string(dict::CardinalDict{K,V}, state) where K where V
-    return string("CardinalDict{",K,",",V,"}(",string(dict.values),")")
+    length(dict) == 0 && return string("CardinalDict{",K,",",V,"}()")
+    ks = keys(dict)
+    vs = values(dict)
+    kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
+    return string("CardinalDict{",K,",",V,"}(",kv),")")
 end
 
 function Base.show(io::IO, dict::CardinalDict{K,V}, state) where K where V
