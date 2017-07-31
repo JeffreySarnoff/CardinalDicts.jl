@@ -51,7 +51,7 @@ function Base.string(dict::CardinalDict{K,V}, state) where K where V
     ks = keys(dict)
     vs = values(dict)
     kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
-    return string("CardinalDict{",K,",",V,"}(",kv),")")
+    return string("CardinalDict{",K,",",V,"}(",kv,")")
 end
 
 function Base.show(io::IO, dict::CardinalDict{K,V}, state) where K where V
