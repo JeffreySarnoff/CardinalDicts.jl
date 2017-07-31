@@ -37,7 +37,7 @@ end
 
 function Base.next(dict::CardinalDict{K,V}, state) where K where V
     index, ks = state
-    (ks[index], dict.values.values[index]), (index+1, ks)
+    (ks[index], dict.values[index]), (index+1, ks)
 end
 
 function Base.done(dict::CardinalDict{K,V}, state) where K where V
