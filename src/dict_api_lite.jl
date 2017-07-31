@@ -1,6 +1,6 @@
 
 Base.length(dict::CardinalDict{K, V}) where K where V = length(dict.values)
-Base.eltype(dict::CardinalDict{K, V}) where K where V
+Base.eltype(dict::CardinalDict{K, V}) where K where V = Pair{K,V}
 keytype(dict::CardinalDict{K, V}) where K where V = K
 
 Base.:(==)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where K where V =
