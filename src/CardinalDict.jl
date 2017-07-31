@@ -30,7 +30,7 @@ end
     get(dict, key%K, default)
 
 function Base.setindex!(dict::CardinalDict{K,V}, value::V, key::K) where K where V
-    0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
+    0 < key <= keymax(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(keymax(dict))."))
     @inbounds begin
         setindex!(dict.valued, true, key)
         setindex!(dict.values, value, key)
@@ -41,8 +41,8 @@ end
     setindex!(dict, value, key%K)
 
 function clearindex!(dict::CardinalDict{K,V}, key::K) where K where V
-    0 < key <= length(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
-    @inbounds dict.valued[key] = false
+    0 < key <= keymax(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(length(dict))."))
+    @inbounds setindex!(dict.valued, false, key)
     return dict
 end
 @inline clearindex!(dict::CardinalDict{K,V}, key::J) where J where K where V =
