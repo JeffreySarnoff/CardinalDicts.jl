@@ -12,7 +12,8 @@ This package provides the user with dictionaries where the keys are indicies 1:n
 Each CardinalDict pairs a [multi]word indexed bitset that encodes the presence or absence of a value given an index (key) with preallocated, contiguous memory for holding values directly (if of an immutable type) or references to values of some shared type.  Values are retrieved if and only if they have been established.  Values are resettable with values of the same type.
 
 ### Exports
-Your favorite Dict functions should work.  If there is something you need which is missing, please note that as an issue.
+Your favorite Dict functions should work.  If there is something you need which is missing, please note that as an issue.    
+Also exports clearindex!(CardinalDict, index) and keymax(CardinalDict).
 
 ## Use
 
@@ -21,6 +22,7 @@ Your favorite Dict functions should work.  If there is something you need which 
 using CardinalDict
 
 # create an CardinalDict with indices 1:20 that holds Int64 values
+# check length, keymax
 # populate it
 # use it
 # unset an index
@@ -28,6 +30,9 @@ using CardinalDict
 # change an indexed value
 
 FactorialDict = CardinalDict{Int64}(20);
+
+length(FactorialDict) == 0
+keymax(FactorialDict) == 20
 
 for i in 1:20
     setindex!(FactorialDict, factorial(i), i)
@@ -39,6 +44,7 @@ FactorialDict[17] == factorial(17)
 true
 
 clearindex!(FactorialDict, 17)
+
 haskey(FactorialDict, 17)
 false
 get(FactorialDict, 17, 0)
@@ -48,5 +54,4 @@ FactorialDict[17] = factorial(17)
 get(FactorialDict, 17, 0) == factorial(17)
 true
 
-julia> using CardinalDict
 ```
