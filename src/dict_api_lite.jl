@@ -46,7 +46,7 @@ end
 
 # string, io
 
-function Base.string(dict::CardinalDict{K,V}, state) where K where V
+function Base.string(dict::CardinalDict{K,V}) where K where V
     length(dict) == 0 && return string("CardinalDict{",K,",",V,"}()")
     ks = keys(dict)
     vs = values(dict)
@@ -54,6 +54,6 @@ function Base.string(dict::CardinalDict{K,V}, state) where K where V
     return string("CardinalDict{",K,",",V,"}(",kv,")")
 end
 
-function Base.show(io::IO, dict::CardinalDict{K,V}, state) where K where V
+function Base.show(io::IO, dict::CardinalDict{K,V}) where K where V
     print(io, string(dict))
 end
