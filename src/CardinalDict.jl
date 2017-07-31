@@ -5,7 +5,8 @@ struct CardinalDict{K,V} <: Associative{K,V}
     function CardinalDict{V}(n::K) where K<:Integer where V
         valued = falses(n)
         values = Vector{V}(n)
-        return new{K,V}(valued, values)
+        T = type_for_indexing(n)
+        return new{T,V}(valued, values)
     end
 end
 
