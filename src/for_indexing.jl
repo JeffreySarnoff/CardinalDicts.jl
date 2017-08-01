@@ -20,7 +20,7 @@ end
 const TYPES_FOR_INDEXING = [Int8, Int16, Int32, Int32, Int64, Int64, Int64, Int64, Int128 ]
 
 function type_for_indexing(posint::T) where T<:Integer
-    type_index = nextpow2(bits_required(posint) + one(T)) >>> 3%T
+    type_index = nextpow2(bits_required(posint) + one(T)) >>> 2%T
     indexingtype = TYPES_FOR_INDEXING[ max(1, min(9, type_index)_ ]
     return indexingtype
 end
