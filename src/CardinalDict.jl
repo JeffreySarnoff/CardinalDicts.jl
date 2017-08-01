@@ -10,6 +10,16 @@ struct CardinalDict{K,V} <: Associative{K,V}
     end
 end
 
+function CardinalDict(values::Vector{T}) where T
+    n = length(values)
+    dict = CardinalDict{T}(n)
+    for i in 1:n
+        @inbounds dict[i] = values[i]
+    end
+    return dict
+end
+
+
 @inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where K where V
    return getindex(dict.valued, key)
 end
