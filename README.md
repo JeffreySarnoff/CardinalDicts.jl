@@ -54,4 +54,10 @@ FactorialDict[17] = factorial(17)
 get(FactorialDict, 17, 0) == factorial(17)
 true
 
+# create CardinalDict from vector of values
+
+avector = [1.0, 3.0, 2.0];
+DictFromVector = CardinalDict(avector);
+DictFromVector[2] == 3.0
+
 ```
