@@ -8,6 +8,9 @@
 ### Purpose
 This package provides the user with dictionaries where the keys are indicies 1:n, and the values are of any predetermined type.  While the total number of entries is set at construction, it is not necessary to give all keys associated values.  Values may be entered (or altered) at any time.  The data structure offers fast setting of and access to values via their indicies.  For values that are of an immutable type, the retreival time is very fast.
 
+### Overview
+This small package that couples a BitVector with a preallocated Vector{T} for some T to allow faster get/set for sequentially available information (or naturally 1:n keyed values), where any values may be or become unavailable or opaque or null (the sematics are flexible).  The little benchmarking I have done is encouraging.
+
 ### Design
 Each CardinalDict pairs a [multi]word indexed bitset that encodes the presence or absence of a value given an index (key) with preallocated, contiguous memory for holding values directly (if of an immutable type) or references to values of some shared type.  Values are retrieved if and only if they have been established.  Values are resettable with values of the same type.
 
