@@ -33,12 +33,6 @@ end
 @inline Base.getindex(dict::CardinalDict{K,V}, key::J) where J where K where V =
     getindex(dict, key%K)
 
-function Base.get(dict::CardinalDict{K,V}, key::K, default::V) where K where V
-    return haskey(dict, key) ? getindex(dict.values, key) : default
-end
-@inline Base.get(dict::CardinalDict{K,V}, key::J, default::V) where J where K where V =
-    get(dict, key%K, default)
-
 function Base.setindex!(dict::CardinalDict{K,V}, value::V, key::K) where K where V
     0 < key <= keymax(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(keymax(dict))."))
     @inbounds begin
