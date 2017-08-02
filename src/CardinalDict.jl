@@ -20,20 +20,20 @@ function CardinalDict(values::Vector{T}) where T
 end
 
 
-@inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where K where V
+@inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where {K,V}
    return getindex(dict.valued, key)
 end
-@inline Base.haskey(dict::CardinalDict{K,V}, key::J) where J where K where V =
+@inline Base.haskey(dict::CardinalDict{K,V}, key::J) where {J,K,V} =
     haskey(dict, key%K)
 
-function Base.getindex(dict::CardinalDict{K,V}, key::K) where K where V
+function Base.getindex(dict::CardinalDict{K,V}, key::K) where {K,V}
     haskey(dict, key) || throw(ErrorException("Key (index) $(key) has not been given a value"))
     @inbounds return getindex(dict.values, key)
 end
-@inline Base.getindex(dict::CardinalDict{K,V}, key::J) where J where K where V =
+@inline Base.getindex(dict::CardinalDict{K,V}, key::J) where {J,K,V} =
     getindex(dict, key%K)
 
-function Base.setindex!(dict::CardinalDict{K,V}, value::V, key::K) where K where V
+function Base.setindex!(dict::CardinalDict{K,V}, value::V, key::K) where {K,V}
     0 < key <= keymax(dict) || throw(ErrorException("Key (index) $(key) is outside of the domain 1:$(keymax(dict))."))
     @inbounds begin
         setindex!(dict.valued, true, key)
