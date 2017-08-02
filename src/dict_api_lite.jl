@@ -9,6 +9,26 @@ Base.:(==)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where K where V =
 Base.:(==)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where K where J where V where W =
     false
 
+
+function Base.get(dict::CardinalDict{K,V}, key::K, default::V) where K where V
+    return haskey(dict, key) ? getindex(dict.values, key) : default
+end
+@inline Base.get(dict::CardinalDict{K,V}, key::J, default::V) where J where K where V =
+    get(dict, key%K, default)
+
+function Base.get!(dict::CardinalDict{K,V}, key::K, default::V) where K where V
+    if haskey(dict, key)
+        getindex(dict.values, key)
+    else
+        setindex!(dict, default, key)
+        default
+    end
+end
+@inline Base.get!(dict::CardinalDict{K,V}, key::J, default::V) where J where K where V =
+    get!(dict, key%K, default)
+
+
+
 @inline keymax(dict::CardinalDict{K,V}) where K where V = length(dict.valued)%K
 
 function Base.keys(dict::CardinalDict{K,V}) where K where V
