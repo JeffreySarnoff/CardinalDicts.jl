@@ -1,5 +1,6 @@
 # core
 Base.length(dict::CardinalDict{K, V}) where K where V = sum(dict.valued)
+Base.endof(dict::CardinalDict{K,V}) where K where V = length(dict.valued)
 
 Base.eltype(dict::CardinalDict{K, V}) where K where V = Pair{K,V}
 
