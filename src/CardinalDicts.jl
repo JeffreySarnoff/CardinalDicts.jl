@@ -1,6 +1,6 @@
 module CardinalDicts
 
-export CardinalDict, keymax, clearindex!
+export CardinalDict, clearindex!
 
 include("for_indexing.jl")
 include("CardinalDict.jl")
