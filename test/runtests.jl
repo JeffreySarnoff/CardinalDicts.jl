@@ -32,10 +32,11 @@ clearindex!(FactorialDict, 17)
 FactorialDict[17] = factorial(17)
 @test FactorialDict[17] == factorial(17)
 
-avector = [1.0, 3.0, 2.0]
-DictFromVector = CardinalDict(avector)
-@test DictFromVector[2] == 3.0
-@test keymax(DictFromVector) == 3
+vec = [1.0, 3.0, 2.0]
+fromvec = CardinalDict(vec)
+@test fromvec[2] == 3.0
+@test keymax(fromvec) == 3
+@test isfull(fromvec) == true
 
 # Container, Associative interface
 
@@ -51,5 +52,6 @@ Tenfold[26] = 260
 @test endof(Tenfold) == 26
 @test keys(Tenfold) == [20, 25, 26]
 @test values(Tenfold) == [200, 250, 260]
+@test eltype(tenfold) = Pair{Int8, Int}
 
 
