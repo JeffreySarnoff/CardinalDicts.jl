@@ -46,7 +46,7 @@ Tenfold = CardinalDict{Int32}(40)
 @test keys(Tenfold) == []
 @test values(Tenfold) == []
 Tenfold[20] = 200%Int32
-Tenfold[25] = 250%Imt32
+Tenfold[25] = 250%Int32
 Tenfold[26] = 260%Int32
 @test length(Tenfold) == 3
 @test endof(Tenfold) == 26
