@@ -29,7 +29,7 @@ end
 @inline Base.get!(dict::CardinalDict{K,V}, key::J, default::V) where {J,K,V} =
     get!(dict, key%K, default)
 
-# keys, values
+# keys, values, in (∈, ∋, ∉, ∌)
 
 function Base.keys(dict::CardinalDict{K,V}) where {K,V}
     allkeys = one(K):keymax(dict)
@@ -49,6 +49,15 @@ function Base.values(dict::CardinalDict{K,V}) where {K,V}
     end
     return result
 end
+
+function Base.in(value::V, dict::CardinalDict{K,V}) where {K,V} 
+    return length(dict)!=0 && in(value, values(dict))
+end
+
+@inline Base.∈(value::V, dict::CardinalDict{K,V}) where {K,V} = in(value, dict)
+@inline Base.∋(dict::CardinalDict{K,V}, value::V) where {K,V} = in(value, dict)
+@inline Base.∉(value::V, dict::CardinalDict{K,V}) where {K,V} = !in(value, dict)
+@inline Base.∌(dict::CardinalDict{K,V}, value::V) where {K,V} = !in(value, dict)
 
 # delete!, clearindex!, empty!
 
