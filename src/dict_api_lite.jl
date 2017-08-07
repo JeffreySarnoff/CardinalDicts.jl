@@ -107,7 +107,7 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
     ks = keys(dict)
     vs = values(dict)
     ttyrows = displaysize(Base.TTY())[1] - 2
-    if ttyrows <= n  
+    if ttyrows >= n  
         kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
         str = string("CardinalDict(",kv,")")
     else
