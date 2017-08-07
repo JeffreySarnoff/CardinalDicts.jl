@@ -97,10 +97,26 @@ end
 
 function Base.string(dict::CardinalDict{K,V}) where {K,V}
     length(dict) == 0 && return string("CardinalDict{",K,",",V,"}()")
+    vs = values(dict)
+    return string("CardinalDict{",K,"}(",vs,")")
+end
+
+function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
+    n = length(dict)
+    n == 0 && return string("CardinalDict{",K,",",V,"}()")
     ks = keys(dict)
     vs = values(dict)
-    kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
-    return string("CardinalDict{",K,",",V,"}(",kv,")")
+    ttyrows = displaysize(Base.TTY())[1] - 2
+    if ttyrows <= n  
+        kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
+        str = string("CardinalDict{",K,"}(",kv,")")
+    else
+        ttyrows = fld(ttyrows, 2)
+        kvfront = [Pair(k,v) for (k,v) in zip(ks[1:ttyrows], vs[1:ttyrows])]
+        kvback  = [Pair(k,v) for (k,v) in zip(ks[end-ttyrows:end], vs[end-ttyrows:end])]
+        str = string("CardinalDict{",K,"}(",kvfront,"...",kvback,")")
+    end
+    return print(io, str)
 end
 
 function Base.show(io::IO, dict::CardinalDict{K,V}) where {K,V}
