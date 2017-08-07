@@ -54,7 +54,7 @@ function Base.in(value::V, dict::CardinalDict{K,V}) where {K,V}
     return length(dict)!=0 && in(value, values(dict))
 end
 
-@inline Base.:(∈)(value::V, dict::CardinalDict{K,V}) where {K,V} = in(value, dict)
+#@inline Base.:(∈)(value::V, dict::CardinalDict{K,V}) where {K,V} = in(value, dict) # not needed
 @inline Base.:(∋)(dict::CardinalDict{K,V}, value::V) where {K,V} = in(value, dict)
 @inline Base.:(∉)(value::V, dict::CardinalDict{K,V}) where {K,V} = !in(value, dict)
 @inline Base.:(∌)(dict::CardinalDict{K,V}, value::V) where {K,V} = !in(value, dict)
