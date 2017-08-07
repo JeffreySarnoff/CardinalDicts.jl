@@ -40,18 +40,20 @@ fromvec = CardinalDict(vec)
 
 # Container, Associative interface
 
-Tenfold = CardinalDict{Int32}(40)
-@test length(Tenfold) == 0
-@test endof(Tenfold) == 0
-@test keys(Tenfold) == []
-@test values(Tenfold) == []
-Tenfold[20] = 200%Int32
-Tenfold[25] = 250%Int32
-Tenfold[26] = 260%Int32
-@test length(Tenfold) == 3
-@test endof(Tenfold) == 26
-@test keys(Tenfold) == Int8[20, 25, 26]
-@test values(Tenfold) == Int32[200, 250, 260]
+tenfold = CardinalDict{Int32}(40)
+@test length(tenfold) == 0
+@test endof(tenfold) == 0
+@test keymax(tenfold) == 40
+@test keys(tenfold) == []
+@test values(tenfold) == []
+tenfold[20] = 200%Int32
+tenfold[25] = 250%Int32
+tenfold[26] = 260%Int32
+@test length(tenfold) == 3
+@test endof(tenfold) == 26
+@test keymax(tenfold) == 40
+@test keys(tenfold) == Int8[20, 25, 26]
+@test values(tenfold) == Int32[200, 250, 260]
 @test eltype(tenfold) == Pair{Int8, Int32}
 
 
