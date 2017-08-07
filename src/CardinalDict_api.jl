@@ -1,5 +1,7 @@
 include("dict_api_lite.jl")
 
+
+keymax(dict::CardinalDict{K, V}) where {K,V} = length(dict.valued)
 isfull(dict::CardinalDict{K, V}) where {K,V} = all(dict.valued)
 
 function clearindex!(dict::CardinalDict{K,V}, key::K) where K where V
