@@ -109,12 +109,12 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
     ttyrows = displaysize(Base.TTY())[1] - 2
     if ttyrows <= n  
         kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
-        str = string("CardinalDict{",K,"}(",kv,")")
+        str = string("CardinalDict(",kv,")")
     else
         ttyrows = fld(ttyrows, 2)
         kvfront = [Pair(k,v) for (k,v) in zip(ks[1:ttyrows], vs[1:ttyrows])]
         kvback  = [Pair(k,v) for (k,v) in zip(ks[end-ttyrows:end], vs[end-ttyrows:end])]
-        str = string("CardinalDict{",K,"}(",kvfront,"...",kvback,")")
+        str = string("CardinalDict(",kvfront,"...",kvback,")")
     end
     return print(io, str)
 end
