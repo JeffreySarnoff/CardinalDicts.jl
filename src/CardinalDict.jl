@@ -19,6 +19,20 @@ function CardinalDict(values::Vector{T}) where T
     return dict
 end
 
+const SInt = Union{Int8, Int16, Int32, Int64, Int128}
+
+function CardinalDict(pairs::Vector{T}) where T<:AbstractArray{P,1} where P<:Pair{I,V} where I<:SInt where V
+    n = length(pairs)
+    thekeys = map(first, pairs)
+    thevalues = map(last, pairs)
+    thekeymax = maximum(thekeys)
+    dict = CardinalDict(thekeymax)
+    for i in 1:n
+        @inbounds dict[thekeys[i]] = thevalues[i]
+    end
+    return dict
+end
+
 @inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where {K,V}
    return getindex(dict.valued, key)
 end
