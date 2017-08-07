@@ -31,8 +31,6 @@ end
 
 # keys, values
 
-@inline keymax(dict::CardinalDict{K,V}) where {K,V} = length(dict.valued)%K
-
 function Base.keys(dict::CardinalDict{K,V}) where {K,V}
     allkeys = one(K):keymax(dict)
     result = Vector{K}()
