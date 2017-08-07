@@ -54,6 +54,6 @@ tenfold[26] = 260%Int32
 @test keymax(tenfold) == 40
 @test keys(tenfold) == Int8[20, 25, 26]
 @test values(tenfold) == Int32[200, 250, 260]
-@test eltype(tenfold) == Pair{Int8, Int32}
+@test eltype(tenfold) == Pair{Int16, Int32}
 
 
