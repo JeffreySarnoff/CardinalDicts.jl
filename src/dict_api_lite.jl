@@ -98,7 +98,7 @@ end
 function Base.string(dict::CardinalDict{K,V}) where {K,V}
     length(dict) == 0 && return string("CardinalDict{",K,",",V,"}()")
     vs = values(dict)
-    return string("CardinalDict{",K,"}(",vs,")")
+    return string("CardinalDict(",vs,")")
 end
 
 function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
