@@ -45,13 +45,13 @@ Tenfold = CardinalDict{Int32}(40)
 @test endof(Tenfold) == 0
 @test keys(Tenfold) == []
 @test values(Tenfold) == []
-Tenfold[20] = 200
-Tenfold[25] = 250
-Tenfold[26] = 260
+Tenfold[20] = 200%Int32
+Tenfold[25] = 250%Imt32
+Tenfold[26] = 260%Int32
 @test length(Tenfold) == 3
 @test endof(Tenfold) == 26
-@test keys(Tenfold) == [20, 25, 26]
-@test values(Tenfold) == [200, 250, 260]
+@test keys(Tenfold) == Int8[20, 25, 26]
+@test values(Tenfold) == Int32[200, 250, 260]
 @test eltype(tenfold) = Pair{Int8, Int32}
 
 
