@@ -52,6 +52,6 @@ Tenfold[26] = 260
 @test endof(Tenfold) == 26
 @test keys(Tenfold) == [20, 25, 26]
 @test values(Tenfold) == [200, 250, 260]
-@test eltype(tenfold) = Pair{Int8, Int}
+@test eltype(tenfold) = Int===Int64 ? Pair{Int8, Int64} : Pair{Int8, Int64}
 
 
