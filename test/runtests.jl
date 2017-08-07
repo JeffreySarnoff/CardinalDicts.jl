@@ -35,3 +35,21 @@ FactorialDict[17] = factorial(17)
 avector = [1.0, 3.0, 2.0]
 DictFromVector = CardinalDict(avector)
 @test DictFromVector[2] == 3.0
+@test keymax(DictFromVector) == 3
+
+# Container, Associative interface
+
+Tenfold = CardinalDict{Int}(40)
+@test length(Tenfold) == 0
+@test endof(Tenfold) == 0
+@test keys(Tenfold) == []
+@test values(Tenfold) == []
+Tenfold[20] = 200
+Tenfold[25] = 250
+Tenfold[26] = 260
+@test length(Tenfold) == 3
+@test endof(Tenfold) == 26
+@test keys(Tenfold) == [20, 25, 26]
+@test values(Tenfold) == [200, 250, 260]
+
+
