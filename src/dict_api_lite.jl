@@ -1,6 +1,6 @@
 # core
 Base.length(dict::CardinalDict{K, V}) where {K,V} = sum(dict.valued)
-Base.endof(dict::CardinalDict{K,V}) where {K,V} = length(dict.valued)
+Base.endof(dict::CardinalDict{K,V}) where {K,V} = findlast(dict.valued, true)
 Base.isempty(dict::CardinalDict{K, V}) where {K,V} = !any(dict.valued)
 
 Base.eltype(dict::CardinalDict{K, V}) where {K,V} = Pair{K,V}
