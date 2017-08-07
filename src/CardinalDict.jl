@@ -19,6 +19,7 @@ function CardinalDict(values::Vector{T}) where T
     return dict
 end
 
+@inline keymax(dict::CardinalDict{K,V}) where {K,V} = length(dict.valued)%K
 
 @inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where {K,V}
    return getindex(dict.valued, key)
