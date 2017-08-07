@@ -114,7 +114,12 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
         ttyrows = fld(ttyrows, 2)
         kvfront = [Pair(k,v) for (k,v) in zip(ks[1:ttyrows], vs[1:ttyrows])]
         kvback  = [Pair(k,v) for (k,v) in zip(ks[end-ttyrows:end], vs[end-ttyrows:end])]
-        str = string("CardinalDict(",kvfront,"...",kvback,")")
+        sfront = string(kvfront)
+        sback  = string(kvback)
+        str = string(sfront[findfirst(sfront,'}')+1:end-1],", ..., ")
+        str = string(str, sback[findfirst(sback,'}')+1:end])
+        str = string("CardinalDict(", str)
+        str = join(split(str,", "),",\n")
     end
     return print(io, str)
 end
