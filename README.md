@@ -14,9 +14,10 @@ This small package that couples a BitVector with a preallocated Vector{T} for so
 ### Design
 Each CardinalDict pairs a [multi]word indexed bitset that encodes the presence or absence of a value given an index (key) with preallocated, contiguous memory for holding values directly (if of an immutable type) or references to values of some shared type.  Values are retrieved if and only if they have been established.  Values are resettable with values of the same type.
 
-### Exports
-CardinalDict, clearindex!(dict:CardinalDict, key::Integer), isfull(dict:CardinalDict)    
-*also provides*    
+### Offers
+#### exports
+CardinalDict, clearindex!(dict:CardinalDict, key::Integer), isfull(dict:CardinalDict)   
+#### provides
 ==, length, isempty, endof, eltype, keys, values, getindex, setindex!, delete!, empty!,    
 get(dict::CardinalDict{K,V}, key::K, default::V), get!(dict::CardinalDict{K,V}, key::K, default::V),    
 start, next, done, string, show    
