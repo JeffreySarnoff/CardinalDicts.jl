@@ -23,7 +23,7 @@ const SInt = Union{Int8, Int16, Int32, Int64, Int128}
 
 # these two support eval(parse(string(dict::CardinalDict)))
 
-function CardinalDict(zipped::Base.Iterators.Zip2{Array{I,1},Array{V,1}}; maxkey::SInt=length(zipped)) where {I<:SInt,V}
+function CardinalDict(zipped::Base.Iterators.Zip2{Array{I,1},Array{V,1}}, maxkey::SInt=length(zipped)) where {I<:SInt,V}
     thekeys = map(first, zipped)
     thevals = map(last, zipped)
     maxkey  = max(maxkey, maximum(thekeys))
@@ -34,7 +34,7 @@ function CardinalDict(zipped::Base.Iterators.Zip2{Array{I,1},Array{V,1}}; maxkey
     return result
 end
 
-function CardinalDict(pairs::Vector{Pair{I,V}}; maxkey::SInt=length(pairs)) where {I<:SInt,V}
+function CardinalDict(pairs::Vector{Pair{I,V}}, maxkey::SInt=length(pairs)) where {I<:SInt,V}
     thekeys = map(first, pairs)
     thevals = map(last, pairs)
     maxkey  = max(maxkey, maximum(thekeys))
