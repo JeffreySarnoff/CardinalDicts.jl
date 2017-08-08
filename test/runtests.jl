@@ -12,25 +12,27 @@ using Base.Test
   reassign an indexable value
 =#
 
-FactorialDict = CardinalDict{Int64}(20);
+factorials = CardinalDict{Int64}(20);
 
-@test length(FactorialDict) == 0
-@test keymax(FactorialDict) == 20
+@test length(factorials) == 0
+@test keymax(factorials) == 20
 
 for i in 1:20
-    setindex!(FactorialDict, factorial(i), i)
+    setindex!(factorials, factorial(i), i)
 end
 
-@test length(FactorialDict) == 20
+@test length(factorials) == 20
+@test keymax(factorials) == 20
 
-@test haskey(FactorialDict, 17) == true
-@test FactorialDict[17] == factorial(17)
+@test haskey(factorials, 17) == true
+@test factorials[17] == factorial(17)
 
-clearindex!(FactorialDict, 17)
-@test haskey(FactorialDict, 17) == false
-@test get(FactorialDict, 17, 0) == 0
-FactorialDict[17] = factorial(17)
-@test FactorialDict[17] == factorial(17)
+delete!(factorials, 17)
+@test haskey(factorials, 17) == false
+@test get(factorials, 17, 0) == 0
+
+Factorials[17] = factorial(17)
+@test factorials[17] == factorial(17)
 
 vec = [1.0, 3.0, 2.0]
 fromvec = CardinalDict(vec)
@@ -55,5 +57,3 @@ tenfold[26] = 260%Int32
 @test keys(tenfold) == Int8[20, 25, 26]
 @test values(tenfold) == Int32[200, 250, 260]
 @test eltype(tenfold) == Pair{Int16, Int32}
-
-
