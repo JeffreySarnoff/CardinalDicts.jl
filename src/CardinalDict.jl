@@ -28,8 +28,8 @@ function CardinalDict(pairs::Vector{T}) where T<:AbstractArray{P,1} where P<:Pai
     thevalues = map(last, pairs)
     thekeymax = maximum(thekeys)
     dict = CardinalDict{V}(thekeymax)
-    for i in 1:n
-        @inbounds dict[thekeys[i]] = thevalues[i]
+    for (k,v) in zip(thekeys, thevalues)
+        dict[k] = v
     end
     return dict
 end
