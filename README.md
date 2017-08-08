@@ -43,25 +43,24 @@ Your favorite Dict functions should work.  If there is something you need which 
 
 factorials = CardinalDict{Int64}(20);
 
-@test length(factorials) == 0
-@test keymax(factorials) == 20
+length(factorials) == 0
+keymax(factorials) == 20
 
 for i in 1:20
     setindex!(factorials, factorial(i), i)
 end
 
-@test length(factorials) == 20
-@test keymax(factorials) == 20
-
-@test haskey(factorials, 17) == true
-@test factorials[17] == factorial(17)
+length(factorials) == 20
+keymax(factorials) == 20
+haskey(factorials, 17) == true
+factorials[17] == factorial(17)
 
 delete!(factorials, 17)
-@test haskey(factorials, 17) == false
-@test get(factorials, 17, 0) == 0
+haskey(factorials, 17) == false
+get(factorials, 17, 0) == 0
 
 factorials[17] = factorial(17)
-@test factorials[17] == factorial(17)
+factorials[17] == factorial(17)
 ```
 ### construct from a vector or the stringized form
 ```julia
