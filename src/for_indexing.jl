@@ -6,21 +6,22 @@
         when they are being leaned upon to provide time-minimized access.
 =#
 
-bitsof(::Type{T}) where T = sizeof(T) * 8
-@inline function bitsof(::Type{T})::T where T<:Integer
-    return sizeof(T)%T << (one(T)+one(T)+one(T))
-end
- 
+@inline bitsof(::Type{T}) where T = sizeof(T) * 8
+bitsof(x::T) where T = bitsof(T)
+
 function bits_required(posint::T)::T where T<:Integer
     posint > 0 || throw(ErrorException("posint ($(posint)) must be > 0"))
-    bitsize = bitsof(T)
-    return bitsize - leading_zeros(posint)%T
+    return bitsof(T) - leading_zeros(posint)%T
 end
 
-const TYPES_FOR_INDEXING = [Int8, Int16, Int32, Int32, Int64, Int64, Int64, Int64, Int128 ]
+const TYPES_FOR_INDEXING = [ Int8, Int16, Int32, Int64, Int128 ]
 
 function type_for_indexing(posint::T) where T<:Integer
+    posint < 0 && throw(ErrorException("posint ($(posint)) must be => 0"))
+    posint = max(127%T, posint)
     type_index = nextpow2(bits_required(posint) + one(T)) >>> 2%T
-    indexingtype = TYPES_FOR_INDEXING[ max(1, min(9, type_index)) ]
-    return indexingtype
+    type_index = trailing_zeros(type_index)%T
+    type_index = max(1%T, min(5%T, type_index))
+    return TYPES_FOR_INDEXING[ type_index ]
 end
+    
