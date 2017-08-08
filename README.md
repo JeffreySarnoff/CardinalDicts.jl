@@ -76,20 +76,21 @@ dict == dict2
 
 using CardinalDicts
 
-tenfold = CardinalDict{String}(40)
+tenfold = CardinalDict{String}(40);
 length(tenfold) == 0
 endof(tenfold) == 0
 keymax(tenfold) == 40
 keys(tenfold) == []
 values(tenfold) == []
 
-tenfold[20] = "200"
-tenfold[25] = "250"
-tenfold[26] = "260"
+tenfold[20] = "200";
+tenfold[25] = "250";
+tenfold[26] = "260";
 
 length(tenfold) == 3
 endof(tenfold) == 26
 keymax(tenfold) == 40
+
 keys(tenfold) == Int8[20, 25, 26]
 values(tenfold) == String["200", "250", "260"]
 eltype(tenfold) == Pair{Int8, String}
