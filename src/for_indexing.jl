@@ -16,12 +16,12 @@ end
 
 const TYPES_FOR_INDEXING = [ Int8, Int16, Int32, Int64, Int128 ]
 
-function type_for_indexing(posint::T) where T<:Integer
+function type_for_indexing(posint::T) where T<:Union{Int8, Int16, Int32, Int64, Int128}
     posint < 0 && throw(ErrorException("posint ($(posint)) must be => 0"))
     posint = max(127%T, posint)
-    type_index = nextpow2(bits_required(posint) + one(T)) >>> 2%T
-    type_index = trailing_zeros(type_index)%T
-    type_index = max(1%T, min(5%T, type_index))
+    type_index = nextpow2(bits_required(posint) + 1)) >>> 2
+    type_index = trailing_zeros(type_index)
+    type_index = max(1, min(5, type_index))
     return TYPES_FOR_INDEXING[ type_index ]
 end
     
