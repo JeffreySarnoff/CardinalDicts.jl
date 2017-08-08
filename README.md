@@ -41,6 +41,8 @@ Your favorite Dict functions should work.  If there is something you need which 
   reassign an indexable value
 =#
 
+using CardinalDicts
+
 factorials = CardinalDict{Int64}(20);
 
 length(factorials) == 0
@@ -58,6 +60,8 @@ factorials[17] == factorial(17)
 ### construct from a vector or the stringized form
 ```julia
 
+using CardinalDicts
+
 vec = [1.0, 3.0, 2.0]
 dict = CardinalDict(vec)
 dict[2] == 3.0
@@ -70,6 +74,8 @@ dict == dict2
 
 ### exercise api
 ```julia
+
+using CardinalDicts
 
 tenfold = CardinalDict{String}(40)
 length(tenfold) == 0
