@@ -137,12 +137,4 @@ end
 
 Base.show(dict::CardinalDict{K,V}) where {K,V} = Base.show(Base.STDOUT, dict)
    
-function Base.display(d::Display, dict::CardinalDict{K,V}) where {K,V}
-    str = stringtoshow(dict)
-    return display(d, str)
-end
-
-function Base.display(dict::CardinalDict{K,V}) where {K,V}
-    str = stringtoshow(dict)
-    return show(str)
-end
+Base.display(dict::CardinalDict{K,V}) where {K,V} = Base.show(dict)
