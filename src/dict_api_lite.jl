@@ -111,15 +111,19 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
         kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
         str = string("CardinalDict(",kv,")")
     else
-        ttyrows = fld(ttyrows, 2)
-        kvfront = [Pair(k,v) for (k,v) in zip(ks[1:ttyrows], vs[1:ttyrows])]
-        kvback  = [Pair(k,v) for (k,v) in zip(ks[end-ttyrows:end], vs[end-ttyrows:end])]
-        sfront = string(kvfront)
-        sback  = string(kvback)
-        str = string(sfront[findfirst(sfront,'}')+1:end-1],", ..., ")
-        str = string(str, sback[findfirst(sback,'}')+1:end])
-        str = string("CardinalDict(", str)
-        str = join(split(str,", "),",\n")
+        if ttyrows >= n
+            kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
+            str = string("CardinalDict(",kv,")")
+        else
+            ttyrows = fld(ttyrows-2, 2)
+            kvfront = [Pair(k,v) for (k,v) in zip(ks[1:ttyrows], vs[1:ttyrows])]
+            kvback  = [Pair(k,v) for (k,v) in zip(ks[end-ttyrows:end], vs[end-ttyrows:end])]
+            sfront = string(kvfront)
+            sback  = string(kvback)
+        str = string(sfront[findfirst(sfront,'}')+1:end-1],",  ...\n", sback[findfirst(sback,'}')+2:end])
+            str = string("CardinalDict(", str, ")")
+            str = join(split(str,", "),",\n  ")
+        end
     end
     return print(io, str)
 end
