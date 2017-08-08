@@ -2,11 +2,19 @@
 # string, io
 
 function Base.string(dict::CardinalDict{K,V}) where {K,V}
-    length(dict) == 0 && return string("CardinalDict{",V,"}(",keymax(dict),")")
+    n = length(dict)
+    maxkey = keymax(dict)
+    n == 0 && return string("CardinalDict{",V,"}(",maxkey,")")
     ks = keys(dict)
     vs = values(dict)
     kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
-    return string("CardinalDict(",kv,")")
+    str = string("CardinalDict(",kv)
+    if maxkey==n
+        result = string(str,")")
+    else
+        result = string(str,", ",maxkey,")")
+    end
+    return result
 end
 
 function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
@@ -14,7 +22,7 @@ function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
     n == 0 && return string("CardinalDict{",V,"}(",keymax(dict),")")
     ks = keys(dict)
     vs = values(dict)
-    ttyrows = displaysize(Base.TTY())[1] - 2
+    ttyrows = displaysize(Base.TTY())[1] - 4
     if ttyrows >= n  
         kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
         str = string("CardinalDict(",kv,")")
