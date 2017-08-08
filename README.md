@@ -101,4 +101,6 @@ get(tenfold, 20, "0") == "0"
 tenfold[20] = "200"
 haskey(tenfold, 20) == true
 get(tenfold, 20, "0") == "200"
+
+tenfold == eval(parse(string(tenfold)))
 ```
