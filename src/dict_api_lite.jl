@@ -96,7 +96,7 @@ end
 # string, io
 
 function Base.string(dict::CardinalDict{K,V}) where {K,V}
-    length(dict) == 0 && return string("CardinalDict{",V,"}(",endof(dict),")")
+    length(dict) == 0 && return string("CardinalDict{",V,"}(",keymax(dict),")")
     ks = keys(dict)
     vs = values(dict)
     kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
@@ -105,7 +105,7 @@ end
 
 function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
     n = length(dict)
-    n == 0 && return string("CardinalDict{",V,"}(",endof(dict),")")
+    n == 0 && return string("CardinalDict{",V,"}(",keymax(dict),")")
     ks = keys(dict)
     vs = values(dict)
     ttyrows = displaysize(Base.TTY())[1] - 2
