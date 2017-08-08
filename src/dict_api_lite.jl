@@ -14,7 +14,7 @@ Base.:(==)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where {J,W,K,V}
 Base.:(!=)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where {K,V} =
     keys(a_dict) != keys(b_dict) || values(a_dict) != values(values)
 Base.:(!=)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where {J,W,K,V} =
-    false
+    true
 
 # get
 
