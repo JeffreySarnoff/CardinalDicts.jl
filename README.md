@@ -9,7 +9,7 @@
 - This package provides the user with dictionaries where the keys are indicies 1:n, and the values are any predetermined type.    
 - While the total number of entries is set at construction, it is not necessary to give all keys associated values.
 - Values may be entered, altered or cleared at any time using their indices.
-- Clearing a value may be interpreted as setting it to Null (missing/unavailable/unused.
+- Clearing a value may be interpreted as setting it to missing/unavailable/unused/unknown.
 - For immutably typed values, set/get/reset/clear times are very fast.
 
 ### Overview
