@@ -101,7 +101,7 @@ function Base.string(dict::CardinalDict{K,V}) where {K,V}
     return string("CardinalDict(",vs,")")
 end
 
-function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
+function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
     n = length(dict)
     n == 0 && return string("CardinalDict{",K,",",V,"}()")
     ks = keys(dict)
@@ -125,8 +125,17 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
             str = join(split(str,", "),",\n  ")
         end
     end
+    return str
+end
+
+function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
+    str = stringtoshow(dict)
     return print(io, str)
 end
 
 Base.show(dict::CardinalDict{K,V}) where {K,V} = Base.show(Base.STDOUT, dict)
    
+fucntion Base.display(d::Display, dict::CardinalDict{K,V}) where {K,V}
+    str = stringtoshow(dict)
+    return display(d, str)
+end
