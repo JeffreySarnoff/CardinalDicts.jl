@@ -34,16 +34,15 @@ function CardinalDict(zipped::Base.Iterators.Zip2{Array{I,1},Array{V,1}}; maxkey
     return result
 end
 
-function CardinalDict(pairs::Vector{Pair{I,V}}) where {I<:SInt,V}
+function CardinalDict(pairs::Vector{Pair{I,V}}; maxkey::SInt=length(pairs)) where {I<:SInt,V}
     thekeys = map(first, pairs)
     thevals = map(last, pairs)
-    maxkey  = maximum(thekeys)
+    maxkey  = max(maxkey, maximum(thekeys))
     result = CardinalDict{V}(maxkey)
     for (k,v) in zip(thekeys, thevals)
         result[k] = v
     end
-    return result    
-    return CardinalDict( zip(thekeys, thevals) )
+    return result
 end
 
 
