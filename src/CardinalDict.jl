@@ -21,27 +21,26 @@ end
 
 const SInt = Union{Int8, Int16, Int32, Int64, Int128}
 
-# this allows eval(parse(string(dict::CardinalDict))) to work
+# these two support eval(parse(string(dict::CardinalDict)))
+
 function CardinalDict(pairs::Vector{T}) where T<:AbstractArray{P,1} where P<:Pair{I,V} where I<:SInt where V
     thekeys = map(first, pairs)
-    thevalues = map(last, pairs)
-    thekeymax = maximum(thekeys)
-    dict = CardinalDict{V}(thekeymax)
-    for (k,v) in zip(thekeys, thevalues)
-        dict[k] = v
-    end
-    return dict
+    thevals = map(last, pairs)
+    return CardinalDict( zip(thekeys, thevals) )
 end
 
-function CardinalDicts.CardinalDict(pairs::Vector{Pair{I,V}}) where {I<:SInt,V}
-    thekeys = map(first,pairs)
-    thevalues = map(last,pairs)
-    result = CardinalDict{V}(maximum(thekeys))
-    for (k,v) in zip(thekeys, thevalues)
-        result.values[k] = v
+function CardinalDicts.CardinalDict(zipped::Base.Iterators.Zip2{Array{I,1},Array{V,1}}) where {I<:SInt,V}
+    thekeys = map(first, zipped)
+    thevals = map(last, zipped)
+    maxkey  = maximum(thekeys)
+    result = CardinalDict{V}(maxkey)
+    for (k,v) in zipped
+        result[k] = v
     end
     return result
 end
+
+# direct manipulations
 
 @inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where {K,V}
    return getindex(dict.valued, key)
