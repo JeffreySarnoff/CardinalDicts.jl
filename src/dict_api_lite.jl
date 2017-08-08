@@ -128,3 +128,5 @@ function Base.show(io::IO,dict::CardinalDict{K,V}) where {K,V}
     return print(io, str)
 end
 
+Base.show(dict::CardinalDict{K,V}) where {K,V} = Base.show(Base.STDOUT, dict)
+   
