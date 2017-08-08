@@ -1,5 +1,5 @@
 include("dict_api_lite.jl")
-
+include("string_show.jl")
 
 keymax(dict::CardinalDict{K, V}) where {K,V} = length(dict.valued)
 isfull(dict::CardinalDict{K, V}) where {K,V} = all(dict.valued)
