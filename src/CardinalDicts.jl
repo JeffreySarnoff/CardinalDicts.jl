@@ -1,3 +1,5 @@
+__precompile__()
+
 module CardinalDicts
 
 export CardinalDict, clearindex!, keymax, isfull
