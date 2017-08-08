@@ -1,4 +1,5 @@
 # core
+
 Base.length(dict::CardinalDict{K, V}) where {K,V} = sum(dict.valued)
 Base.endof(dict::CardinalDict{K,V}) where {K,V} = findlast(dict.valued, true)
 Base.isempty(dict::CardinalDict{K, V}) where {K,V} = !any(dict.valued)
@@ -6,8 +7,13 @@ Base.isempty(dict::CardinalDict{K, V}) where {K,V} = !any(dict.valued)
 Base.eltype(dict::CardinalDict{K, V}) where {K,V} = Pair{K,V}
 
 Base.:(==)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where {K,V} =
-    a_dict.values == b_dict.values
+    keys(a_dict) == keys(b_dict) && values(a_dict) == values(values)
 Base.:(==)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where {J,W,K,V} =
+    false
+
+Base.:(!=)(a_dict::D, b_dict::D) where D<:CardinalDict{K,V} where {K,V} =
+    keys(a_dict) != keys(b_dict) || values(a_dict) != values(values)
+Base.:(!=)(a_dict::CardinalDict{K,V}, b_dict::CardinalDict{J,W}) where {J,W,K,V} =
     false
 
 # get
