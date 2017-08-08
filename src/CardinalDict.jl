@@ -23,7 +23,6 @@ const SInt = Union{Int8, Int16, Int32, Int64, Int128}
 
 # this allows eval(parse(string(dict::CardinalDict))) to work
 function CardinalDict(pairs::Vector{T}) where T<:AbstractArray{P,1} where P<:Pair{I,V} where I<:SInt where V
-    n = length(pairs)
     thekeys = map(first, pairs)
     thevalues = map(last, pairs)
     thekeymax = maximum(thekeys)
