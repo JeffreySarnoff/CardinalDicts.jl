@@ -33,6 +33,16 @@ function CardinalDict(pairs::Vector{T}) where T<:AbstractArray{P,1} where P<:Pai
     return dict
 end
 
+function CardinalDicts.CardinalDict(pairs::Vector{Pair{I,V}}) where {I<:SInt,V}
+    thekeys = map(first,pairs)
+    thevalues = map(last,pairs)
+    result = CardinalDict{V}(maximum(thekeys))
+    for (k,v) in zip(thekeys, thevalues)
+        result.values[k] = v
+    end
+    return result
+end
+
 @inline function Base.haskey(dict::CardinalDict{K,V}, key::K) where {K,V}
    return getindex(dict.valued, key)
 end
