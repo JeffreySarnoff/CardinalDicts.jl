@@ -95,9 +95,10 @@ keys(tenfold) == Int8[20, 25, 26]
 values(tenfold) == String["200", "250", "260"]
 eltype(tenfold) == Pair{Int8, String}
 
-delete!(tenfold, 20)
+clearindex!(tenfold, 20)
 haskey(tenfold, 20) == false
 get(tenfold, 20, "0") == "0"
+
 tenfold[20] = "200"
 haskey(tenfold, 20) == true
 get(tenfold, 20, "0") == "200"
