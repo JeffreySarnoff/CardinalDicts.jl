@@ -39,7 +39,7 @@ function CardinalDict(pairs::Vector{Pair{I,V}}) where {I<:SInt,V}
     thevals = map(last, pairs)
     maxkey  = maximum(thekeys)
     result = CardinalDict{V}(maxkey)
-    for (k,v) in zip(thekeys, thevalues)
+    for (k,v) in zip(thekeys, thevals)
         result[k] = v
     end
     return result    
