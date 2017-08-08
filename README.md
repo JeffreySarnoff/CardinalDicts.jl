@@ -54,13 +54,6 @@ length(factorials) == 20
 keymax(factorials) == 20
 haskey(factorials, 17) == true
 factorials[17] == factorial(17)
-
-delete!(factorials, 17)
-haskey(factorials, 17) == false
-get(factorials, 17, 0) == 0
-
-factorials[17] = factorial(17)
-factorials[17] == factorial(17)
 ```
 ### construct from a vector or the stringized form
 ```julia
@@ -78,21 +71,28 @@ dict == dict2
 ### exercise api
 ```julia
 
-tenfold = CardinalDict{Int32}(40)
+tenfold = CardinalDict{String}(40)
 length(tenfold) == 0
 endof(tenfold) == 0
 keymax(tenfold) == 40
 keys(tenfold) == []
 values(tenfold) == []
 
-tenfold[20] = 200%Int32
-tenfold[25] = 250%Int32
-tenfold[26] = 260%Int32
+tenfold[20] = "200"
+tenfold[25] = "250"
+tenfold[26] = "260"
 
 length(tenfold) == 3
 endof(tenfold) == 26
 keymax(tenfold) == 40
 keys(tenfold) == Int8[20, 25, 26]
-values(tenfold) == Int32[200, 250, 260]
-eltype(tenfold) == Pair{Int16, Int32}
+values(tenfold) == String["200", "250", "260"]
+eltype(tenfold) == Pair{Int8, String}
+
+delete!(tenfold, 20)
+haskey(tenfold, 20) == false
+get(tenfold, 20, "0") == "0"
+tenfold[20] = "200"
+haskey(tenfold, 20) == true
+get(tenfold, 20, "0") == "200"
 ```
