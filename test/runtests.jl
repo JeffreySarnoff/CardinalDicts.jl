@@ -31,7 +31,7 @@ delete!(factorials, 17)
 @test haskey(factorials, 17) == false
 @test get(factorials, 17, 0) == 0
 
-Factorials[17] = factorial(17)
+factorials[17] = factorial(17)
 @test factorials[17] == factorial(17)
 
 vec = [1.0, 3.0, 2.0]
