@@ -29,45 +29,71 @@ Your favorite Dict functions should work.  If there is something you need which 
 
 ### lookup oft-used naturally sequenced values
 ```julia
-using CardinalDict
 
-# create an CardinalDict with indices 1:20 that holds Int64 values
-# check length, keymax
-# populate it
-# use it
-# unset an index
-# check it
-# change an indexed value
+#=
+  create an CardinalDict with indices 1:20 that holds Int64 values
+  check length
+  confirm keymax
+  populate it
+  use it
+  unset an index
+  check it
+  reassign an indexable value
+=#
 
-FactorialDict = CardinalDict{Int64}(20);
+factorials = CardinalDict{Int64}(20);
 
-length(FactorialDict) == 0
-keymax(FactorialDict) == 20
+@test length(factorials) == 0
+@test keymax(factorials) == 20
 
 for i in 1:20
-    setindex!(FactorialDict, factorial(i), i)
+    setindex!(factorials, factorial(i), i)
 end
-        
-haskey(FactorialDict, 17)
-true
-FactorialDict[17] == factorial(17)
-true
 
-clearindex!(FactorialDict, 17)
+@test length(factorials) == 20
+@test keymax(factorials) == 20
 
-haskey(FactorialDict, 17)
-false
-get(FactorialDict, 17, 0)
-0
+@test haskey(factorials, 17) == true
+@test factorials[17] == factorial(17)
 
-FactorialDict[17] = factorial(17)
-get(FactorialDict, 17, 0) == factorial(17)
-true
+delete!(factorials, 17)
+@test haskey(factorials, 17) == false
+@test get(factorials, 17, 0) == 0
 
-# create CardinalDict from vector of values
+factorials[17] = factorial(17)
+@test factorials[17] == factorial(17)
+```
+### construct from a vector or the stringized form
+```julia
 
-avector = [1.0, 3.0, 2.0];
-DictFromVector = CardinalDict(avector);
-DictFromVector[2] == 3.0
+vec = [1.0, 3.0, 2.0]
+dict = CardinalDict(vec)
+dict[2] == 3.0
+keymax(dict) == 3
+isfull(dict) == true
 
+dict2 = eval(parse(string(dict)))
+dict == dict2
+```
+
+### exercise api
+```julia
+
+tenfold = CardinalDict{Int32}(40)
+length(tenfold) == 0
+endof(tenfold) == 0
+keymax(tenfold) == 40
+keys(tenfold) == []
+values(tenfold) == []
+
+tenfold[20] = 200%Int32
+tenfold[25] = 250%Int32
+tenfold[26] = 260%Int32
+
+length(tenfold) == 3
+endof(tenfold) == 26
+keymax(tenfold) == 40
+keys(tenfold) == Int8[20, 25, 26]
+values(tenfold) == Int32[200, 250, 260]
+eltype(tenfold) == Pair{Int16, Int32}
 ```
