@@ -22,7 +22,7 @@ function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
     n == 0 && return string("CardinalDict{",V,"}(",keymax(dict),")")
     ks = keys(dict)
     vs = values(dict)
-    ttyrows = displaysize(Base.TTY())[1] - 4
+    ttyrows = displaysize(Base.TTY())[1] - 3
     if ttyrows >= n  
         kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
         str = string("CardinalDict(",kv,")")
