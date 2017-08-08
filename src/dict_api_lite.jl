@@ -96,14 +96,16 @@ end
 # string, io
 
 function Base.string(dict::CardinalDict{K,V}) where {K,V}
-    length(dict) == 0 && return string("CardinalDict{",K,",",V,"}()")
+    length(dict) == 0 && return string("CardinalDict{",V,"}(0)")
+    ks = keys(dict)
     vs = values(dict)
-    return string("CardinalDict(",vs,")")
+    kv = [Pair(k,v) for (k,v) in zip(ks,vs)]
+    return string("CardinalDict(",kv,")")
 end
 
 function stringtoshow(dict::CardinalDict{K,V}) where {K,V}
     n = length(dict)
-    n == 0 && return string("CardinalDict{",K,",",V,"}()")
+    n == 0 && return string("CardinalDict{",V,"}(0)")
     ks = keys(dict)
     vs = values(dict)
     ttyrows = displaysize(Base.TTY())[1] - 2
