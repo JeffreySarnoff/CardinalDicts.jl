@@ -18,10 +18,9 @@ Each CardinalDict pairs a [multi]word indexed bitset that encodes the presence o
 #### exports
 CardinalDict, keymax(dict::CardinalDict), clearindex!(dict:CardinalDict, key::Integer), isfull(dict:CardinalDict)   
 #### provides
-==, length, isempty, endof, eltype, keys, values, getindex, setindex!, delete!, empty!,    
+==, !=, length, isempty, endof, eltype, keys, values, getindex, setindex!, delete!, empty!,    
 get(dict::CardinalDict{K,V}, key::K, default::V), get!(dict::CardinalDict{K,V}, key::K, default::V),    
 start, next, done, in (and ∈, ∋, ∉, ∌), string, show    
-
 
 Your favorite Dict functions should work.  If there is something you need which is missing, please note that as an issue.    
 
