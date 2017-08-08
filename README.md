@@ -23,7 +23,7 @@ Each CardinalDict pairs a [multi]word indexed bitset that encodes the presence o
 CardinalDict, keymax(dict::CardinalDict), clearindex!(dict:CardinalDict, key::Integer), isfull(dict:CardinalDict)
    - clearindex! is like delete! if delete! returned nothing   
    - isfull is the dual of isempty   
-   - keymax yeilds the largest admissible key for a given CardinalDict (this value is established at construction)
+   - keymax yields the largest admissible key for a given CardinalDict (this value is established at construction)
 #### provides
 ==, !=, length, isempty, endof, eltype, keys, values, getindex, setindex!, delete!, empty!,    
 get(dict::CardinalDict{K,V}, key::K, default::V), get!(dict::CardinalDict{K,V}, key::K, default::V),    
