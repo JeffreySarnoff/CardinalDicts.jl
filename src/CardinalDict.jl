@@ -19,6 +19,32 @@ function CardinalDict(values::Vector{T}) where T
     return dict
 end
 
+
+struct CardinalPairDict{K,V,N1,N2} <: Associative{K,V}
+    valued::BitArray{1}
+    values::Vector{V}
+    
+    function CardinalPairDict{V}(n1::K, n2::K) where K<:Integer where V
+        n = n1*n2
+        valued = falses(n)
+        values = Vector{V}(n)
+        T = type_for_indexing(n)
+        return new{T,V,n1,n2}(valued, values)
+    end
+end
+
+function CardinalPairDict(values1::Vector{T}, values2::Vector{T}) where T
+    n1 = length(values1)
+    n2 = length(values2)
+    n = n1*n2
+    dict = CardinalPairDict{T}(n1, n2)
+    for i1 in 1:n1
+        for i2 in 1:n2
+            @inbounds dict[i] = values[i]
+    end
+    return dict
+end
+
 const SInt = Union{Int8, Int16, Int32, Int64, Int128}
 
 # these two support eval(parse(string(dict::CardinalDict)))
