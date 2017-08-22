@@ -112,8 +112,9 @@ function elegantunpair(z::T) where T<:Signed
     else
         x = isz
         y = z - isz2 - isz
+        y += y=== 0 ? x : 0
     end
-    return x : (y===0 ? x : y)
+    return x, y
 end
 
 
