@@ -96,6 +96,24 @@ function sqshell(x::T, y::T) where T<:Signed
     mx*mx + mx + y
 end
 
+function unsqshell(z::T) where T<:Signed
+    sqrtz = isqrt(z)
+    sqrtz2 = sqrtz*sqrtz
+    sqrtzp1 = sqrtz+1
+    zmsqrtz2 = z - sqrtz2
+    xya = (sqrtzp1, zmsqrtz2)
+    if z == sqshell(xya...)
+        xya
+    else
+        xyb = (2*(sqrtzp1)-(zmsqrtz2), sqrtzp1)
+        if z == sqshell(xyb...)
+            xyb
+        else
+            throw(ErrorException("unsqshell not found for ($(z))"))
+        end                
+    end
+end
+
 function elegantpair(x::T, y::T) where T<:Signed
     mx = max(x,y)
     mx2 = mx * mx
