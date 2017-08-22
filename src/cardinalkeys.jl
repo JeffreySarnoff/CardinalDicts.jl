@@ -38,7 +38,7 @@ end
 
 @inline function keyval(dict::CardinalPairDict{K,V}, idx1::K, idx2::K) where {K,V}
     guarded_index(dict, idx1, idx2)
-    return elegantpair(idx1, idx2)
+    return sqshell(idx1, idx2) # return elegantpair(idx1, idx2)
 end
 @inline function keyval(dict::CardinalPairDict{K,V}, idx1::J, idx2::J) where {J<:Signed,K,V}
      idxone = idx1%K
