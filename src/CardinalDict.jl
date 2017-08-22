@@ -1,15 +1,3 @@
-struct CardinalDict{K,V} <: Associative{K,V}
-    valued::BitArray{1}
-    values::Vector{V}
-    
-    function CardinalDict{V}(n::K) where K<:Integer where V
-        valued = falses(n)
-        values = Vector{V}(n)
-        T = type_for_indexing(n)
-        return new{T,V}(valued, values)
-    end
-end
-
 function CardinalDict(values::Vector{T}) where T
     n = length(values)
     dict = CardinalDict{T}(n)
@@ -17,20 +5,6 @@ function CardinalDict(values::Vector{T}) where T
         @inbounds dict[i] = values[i]
     end
     return dict
-end
-
-
-struct CardinalPairDict{K,V,N1,N2} <: Associative{K,V}
-    valued::BitArray{1}
-    values::Vector{V}
-    
-    function CardinalPairDict{V}(n1::K, n2::K) where K<:Integer where V
-        n = n1*n2
-        valued = falses(n)
-        values = Vector{V}(n)
-        T = type_for_indexing(n)
-        return new{T,V,n1,n2}(valued, values)
-    end
 end
 
 function CardinalPairDict(values1::Vector{T}, values2::Vector{T}) where T
