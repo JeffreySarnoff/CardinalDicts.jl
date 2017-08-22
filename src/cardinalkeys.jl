@@ -52,21 +52,21 @@ function sqshell(x::T, y::T) where T<:Signed
     mx*mx + mx + y
 end
 
+# iff false then x>y else x<=y
+unsqshelltst(n) = n <= round(Int,sqrt(n-0.5))^2
+
 function unsqshell(z::T) where T<:Signed
     sqrtz = isqrt(z)
-    sqrtz2 = sqrtz*sqrtz
-    sqrtzp1 = sqrtz+1
-    zmsqrtz2 = z - sqrtz2
+    sqrtzp1 = sqrtz + one(T)
+    zmsqrtz2= z - sqrtz*sqrtz
     xya = (sqrtzp1, zmsqrtz2)
+    xyb = ((2*(sqrtzp1)-(zmsqrtz2)), sqrtzp1)
     if z == sqshell(xya...)
         xya
+    elseif z == sqshell(xyb...)
+        xyb
     else
-        xyb = (2*(sqrtzp1)-(zmsqrtz2), sqrtzp1)
-        if z == sqshell(xyb...)
-            xyb
-        else
-            throw(ErrorException("unsqshell not found for ($(z))"))
-        end                
+        throw(ErrorException("unsqshell not found for ($(z))"))
     end
 end
 
