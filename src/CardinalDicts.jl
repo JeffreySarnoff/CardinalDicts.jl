@@ -3,7 +3,7 @@ __precompile__()
 module CardinalDicts
 
 export  AbstractCardinalDict,
-        CardinalDict, 
+        CardinalDict, CardinalPairDict,
         clearindex!, keymax, isfull
 
 abstract type AbstractCardinalDict{K<:Signed,V} <: Associative{K,V} end
@@ -90,12 +90,32 @@ end
      return keyval(dict, idxone, idxtwo)
 end
 
+function sqshell(x::T, y::T) where T<:Signed
+    mx = max(x,y) - 1
+    y  = y - x + 1
+    mx*mx + mx + y
+end
+
 function elegantpair(x::T, y::T) where T<:Signed
     mx = max(x,y)
     mx2 = mx * mx
     mx2 += x+y
     return mx2 - (y===mx ? y : 0)
 end
+
+function elegantunpair(z::T) where T<:Signed
+    isz  = isqrt(z)
+    isz2 = isz*isz
+    if (z - isz2) < isz
+        x = z-isz2
+        y = isz
+    else
+        x = isz
+        y = z - isz2 - isz
+    end
+    return x : (y===0 ? x : y)
+end
+
 
 include("CardinalDict.jl")
 include("CardinalDict_api.jl")
