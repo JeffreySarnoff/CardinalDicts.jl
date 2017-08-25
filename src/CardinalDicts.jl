@@ -43,6 +43,25 @@ struct CardinalPairDict{K,V} <: AbstractCardinalDict{K<:Signed,V}
     end
 end
 
+struct CardinalDictPairs{K,V} <: AbstractCardinalDict{K<:Signed,V}
+    idx1max::K
+    idx2max::K
+
+    valued::BitArray{1}
+    values::Vector{V}
+    
+    function CardinalPairDict{V}(maxidx1::K, maxidx2::K) where K<:Signed where V
+        n = maxidx1 * maxidx2
+        valued = falses(n)
+        values = Vector{V}(n)
+        T = type_for_indexing(n)
+        idx1max = T(maxidx1)
+        idx2max = T(maxidx2)
+        return new{T,V}(idx1max, idx2max, valued, values)
+    end
+end
+
+
 include("cardinalkeys.jl")
 
 include("CardinalDict.jl")
