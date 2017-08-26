@@ -2,9 +2,13 @@ __precompile__()
 
 module CardinalDicts
 
-export  AbstractCardinalDict,
-        CardinalDict, CardinalPairDict,
-        clearindex!, keymax, is_full
+
+export  AbstractCardinalDict, CardinalDict, CardinalPairDict
+
+
+abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
+
+ 
 
 @abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
