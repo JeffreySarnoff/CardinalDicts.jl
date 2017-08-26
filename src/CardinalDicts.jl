@@ -2,7 +2,7 @@ __precompile__()
 
 module CardinalDicts
 
-export  AbstractCardinalDict, CardinalDict, CardinalPairDict
+export AbstractCardinalDict, CardinalDict, CardinalPairDict
 
 abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
