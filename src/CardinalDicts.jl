@@ -43,7 +43,7 @@ end
 
 
 
-struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
+struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
 
     first_index::K    #  lowest  index, currently nonempty
     final_index::K    #  highest index, currently nonempty
@@ -53,13 +53,17 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
-    function CardinalDict{V}(size::NTuple{N,K}) where {N,K,V}
+    function CardinalPairDict{V}(dim_sizes::NTuple{2,K}) where {K,V}
         
-        itemsmax = prod(size)        
-        T = type_for_indexing(itemsmax)
+        size1, size2 = dim_sizes
+        items_max = size1 * size2        
+        T = type_for_indexing(items_max)
         
-        index_start, index_endof = one(T), T(itemsmax)
-        first_index, final_index = zero(T), zero(T) 
+        index1start, index1_endof = one(T), T(size1)
+        index2start, index2_endof = one(T), T(size2)
+        
+        first1index, final-_index = zero(T), zero(T) 
+        first2index, final2index = zero(T), zero(T) 
 
         guards_gate = falses(itemsmax)
         keeps_value = Vector{V}(itemsmax)
