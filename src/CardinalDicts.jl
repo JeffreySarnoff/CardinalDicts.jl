@@ -5,7 +5,7 @@ module CardinalDicts
 export  AbstractCardinalDict,
         CardinalDict, CardinalPair, Cardinal\DictPair
         clearindex!, keymax, is_full
---
+
 @abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
 struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
@@ -13,11 +13,11 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     index_start::K        #   smallest admissible index
     index_endof::K        #   largest  admissible index
 
-    first_index::K        # lowest  currently nonempty index
-    final_index::K        # highest currently nonempty index
+    first_index::K        #  lowest  currently nonempty index
+    final_index::K        #  highest currently nonempty index
 
-    gatesway::BitVector   # associable bistable states
-    keepsval::Vector{V}   # indexable stores of value
+    gatesway::BitVector   #  associable bistable states
+    keepsval::Vector{V}   #  indexable stores of value
 
     function CardinalDict{V}(maxentries::K) where {K,V}
         
@@ -29,6 +29,33 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
         keeps_theval = Vector{V}(maxentries)
         
         return new{T,V}(index_start,  index_endof, 
+                        first_index,  final_index,
+                        gates_theway, keeps_theval)
+    end
+end
+
+
+struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
+
+    index_start::K        #  smallest admissible index
+    index_endof::K        #  largest  admissible index
+
+    first_index::K        #  lowest  currently nonempty index
+    final_index::K        #  highest currently nonempty index
+
+    gatesway::BitVector   #  associable bistable states
+    keepsval::Vector{V}   #  indexable stores of value
+
+    function CardinalPairDict{V}(maxentries::K) where {K,V}
+        
+        T = type_for_indexing(maxentries)
+        index_start, index_endof = one(T), T(maxentries)
+        first_index, final_index = zero(T), zero(T) 
+
+        gates_theway = falses(maxentries)
+        keeps_theval = Vector{V}(maxentries)
+        
+        return new{T,V}(index_start,  index_endof,
                         first_index,  final_index,
                         gates_theway, keeps_theval)
     end
