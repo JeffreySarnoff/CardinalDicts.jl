@@ -1,7 +1,7 @@
 __precompile__()
 
 module CardinalDicts
-
+pr
 export  AbstractCardinalDict,
         CardinalDict, CardinalPair, Cardinal\DictPair
         clearindex!, keymax, is_full
@@ -18,14 +18,16 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
-    function CardinalDict{V}(maxentries::K) where {K,V}
+    function CardinalDict{V}(shape::NTuple{N,K}) where {N,K,V}
         
-        T = type_for_indexing(maxentries)
-        index_start, index_endof = one(T), T(maxentries)
+        itemsmax = prod(shape)        
+        T = type_for_indexing(itemsmax)
+        
+        index_start, index_endof = one(T), T(itemsmax)
         first_index, final_index = zero(T), zero(T) 
 
-        guards_gate = falses(maxentries)
-        keeps_value = Vector{V}(maxentries)
+        guards_gate = falses(itemsmax)
+        keeps_value = Vector{V}(itemsmax)
         
         return new{T,V}(first_index, final_index,
                         index_start, index_endof, 
@@ -33,6 +35,9 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     end
 end
 
+function CardinalDict{V}(maxentries::K) where {K,V}
+    return CardinalDict{V}( (maxentries,) )
+end
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
 
