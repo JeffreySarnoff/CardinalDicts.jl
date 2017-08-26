@@ -1,0 +1,641 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nt",
+				"ntm_date1"
+			],
+			[
+				"ntm",
+				"ntm_time1"
+			],
+			[
+				"NANOSEC_",
+				"NANOSEC_PER_DAY"
+			],
+			[
+				"AbstractD",
+				"AbstractDateTimeDelta"
+			],
+			[
+				"Abstrac",
+				"AbstractDateTime"
+			],
+			[
+				"Abst",
+				"AbstractDateTime"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/indicable.jl",
+			"settings":
+			{
+				"buffer_size": 1603,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/saveTbis whukefir kater 00 it doe help,",
+			"settings":
+			{
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 500.0,
+		"last_filter": "mar",
+		"selected_items":
+		[
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"live",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"mark",
+				"Markdown HTML Preview"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pan",
+				"Pandoc: Convert a Pandoc file to DocX"
+			],
+			[
+				"writ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: css",
+				"Package Control: Satisfy Dependencies"
+			]
+		],
+		"width": 878.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/jas/.julia/v0.6/CardinalDicts",
+		"/C/Users/jas/.julia/v0.6/CardinalDicts/src"
+	],
+	"file_history":
+	[
+		"/C/Users/jas/.julia/v0.6/CardinalDicts/src/CardinalDicts.jl",
+		"/C/Users/jas/.julia/v0.7/CardinalDicts/src/CardinalDicts.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/NanoTimes.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/parse.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/test/runtests.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/addsub.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/compare.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/convert.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/hash.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/parts.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/string.jl",
+		"/C/Users/jas/.julia/v0.7/NanoTimes/src/support.jl",
+		"/C/Users/jas/Documents/JuliaFin/presentations/leapsecs_list/TAI_UTC_values-Brooks.txt",
+		"/C/Users/jas/Downloads/booktext.txt",
+		"/C/Users/jas/Documents/JAS/FinWeb/SmoothingFunctions/src/smoothing.jl",
+		"/C/Users/jas/Documents/JuliaFin/presentations/very high frequency timing/maia_usno_navy_mil__mark3.out.txt",
+		"/C/Users/jas/Documents/JuliaFin/presentations/leapsecs_list/TAIT_to_UTC_Brooks.txt",
+		"/C/Users/jas/Documents/JuliaFin/presentations/leapsecs_list/leapsecs.txt",
+		"/C/Users/jas/AppData/Local/Temp/Temp1_futures-order-book-demo.zip/FUTURES ORDER BOOK.TXT",
+		"/C/Users/jas/Documents/Julia/UsingJulia/markdownediting.md",
+		"/C/Users/jas/Documents/Julia/UsingJulia/test_multimarkdown.md",
+		"/C/Users/jas/Documents/JAS/atypehash.txt",
+		"/C/Users/jas/Documents/Julia/New folder/clockendar_scratchpad.pandoc",
+		"/C/Users/jas/Downloads/2016-December.txt.gz",
+		"/C/Users/jas/.julia/v0.7/DateTimes/.travis.yml",
+		"/C/Users/jas/.julia/v0.7/DateTimes/docs/make.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/accessors.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/adjusters.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/conversions.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/DateTimes.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/periods.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/query.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/ranges.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/rounding.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/src/types.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/accessors.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/adjusters.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/arithmetic.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/conversions.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/io.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/periods.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/query.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/ranges.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/rounding.jl",
+		"/C/Users/jas/.julia/v0.7/DateTimes/test/types.jl",
+		"/C/Users/jas/AppData/Local/Temp/Temp1_futures-tick-demo.zip/FUTURES TRADES.txt",
+		"/C/Users/jas/.julia/v0.6/Datime/src/Datimes.jl",
+		"/C/Users/jas/.julia/v0.6/DayTimes/src/types/abstractions.jl",
+		"/C/Users/jas/.julia/v0.6/DayTimes/src/types/subseconds.jl",
+		"/C/Users/jas/.julia/v0.6/DayTimes/src/types/DayTime.jl",
+		"/C/Users/jas/.julia/v0.6/DayTimes/src/DayTimes.jl",
+		"/C/Users/jas/.julia/v0.6/DayTimes/src/types/time_relative_consts.jls",
+		"/C/Users/jas/Documents/JAS/FinWeb/DayTimes.jl/appveyor.yml",
+		"/C/Users/jas/Downloads/goog1dMins.csv",
+		"/C/Users/jas/Downloads/EURUSD-2015-09/EURUSD-2015-09.csv",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/conversions.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/types.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/accessors.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/ranges.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/arithmetic.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/adjusters.jl",
+		"/C/Users/jas/Documents/projects/Julia/projects/JAS/dates/periods.jl",
+		"/C/Users/jas/AppData/Local/Temp/Temp1_LOBSTER_SampleFile_GOOG_2012-06-21_5.zip/LOBSTER_SampleFiles_ReadMe.txt",
+		"/C/Users/jas/.julia/v0.6/Attoseconds/.travis.yml",
+		"/C/Users/jas/.julia/v0.6/Attoseconds/appveyor.yml",
+		"/C/Users/jas/Documents/LaTeX/FiinWeb/Julis_my_FinWeb.txt",
+		"/C/Users/jas/AppData/Local/Temp/Temp1_LOBSTER_SampleFile_SPY_2012-06-21_30.zip/LOBSTER_SampleFiles_ReadMe.txt",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeArraySupport.jl/src/kinds.jl",
+		"/C/Users/jas/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/jas/.julia/v0.6/BigDates/.travis.yml",
+		"/C/Users/jas/.julia/v0.6/BigDates/test/runtests.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/.gitignore",
+		"/C/Users/jas/Desktop/Kim/hutchens.hlp.txt",
+		"/C/Users/jas/Downloads/PgAdminPortable_1.22.1.paf.exe",
+		"/C/Users/jas/AppData/Roaming/Sublime Text 3/Packages/UnicodeMath/UnicodeMath.sublime-settings",
+		"/C/Users/jas/AppData/Local/Temp/7zO4B57A6F3/Examples.java",
+		"/C/Users/jas/.julia/v0.6/BigDates/test/REQUIRE",
+		"/C/Users/jas/.julia/v0.6/BigDates/src/types.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/timearray.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/smooth/irregular_ema_vec.jl",
+		"/C/Users/jas/Desktop/notes.txt",
+		"/C/Users/jas/.julia/v0.6/RollingFunctions/src/RollingFunctions.jl",
+		"/C/Users/jas/.julia/v0.6/RollingFunctions/src/rolling.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/TimeSeries2.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/timearray.jl",
+		"/C/Users/jas/.julia/v0.6/RollingFunctions/src/running.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/Systematic.jl",
+		"/C/Program Files (x86)/TeXstudio/pygmentize-script.py",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/split.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/readwrite.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/plotrecipes.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/modify.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/deprecated.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/combine.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/apply.jl",
+		"/C/Users/jas/.julia/v0.6/TimeSeries2/src/.timeseriesrc.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/smooth/ema_vec.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/timeseries/ako_return.jl",
+		"/C/Users/jas/.juliarc.jl",
+		"/C/Users/jas/.julia/v0.6/SystematicContours/src/annualize.jl",
+		"/C/Users/jas/.julia/v0.6/ForRob/src/ForRob.jl",
+		"/C/Users/jas/.julia/v0.6/Systematic/src/smooth/ema_param.jl",
+		"/C/Users/jas/.julia/v0.6/SystematicContours/src/SystematicContours.jl",
+		"/C/Users/jas/.julia/v0.6/SystematicContours/src/lookback.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/modify.jl",
+		"/C/Users/jas/AppData/Local/Julia-0.6/.juliarc.jl",
+		"/C/cygwin64/home/jas/.inputrc",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/docs/images/basicplot.png",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/docs/images/complexplot.png",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/docs/source/combine.rst",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/docs/source/readwrite.rst",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/docs/source/timearray.rst",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/NEWS.md",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/apply.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/combine.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/readwrite.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/split.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/src/TimeSeries.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/all.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/apply.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/combine.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/deprecated.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/meta.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/modify.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/readwrite.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/runtests.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/split.jl",
+		"/C/Users/jas/Documents/JAS/FinWeb/TimeSeries.jl/test/timearray.jl"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 156.0,
+		"where_history":
+		[
+			"C:\\Users\\jas\\.julia\\v0.7\\CardinalDicts",
+			"C:\\Users\\jas\\.julia\\v0.7\\NanoTimes",
+			"C:\\Users\\jas\\.julia\\v0.7\\DateTimes",
+			"C:\\Users\\jas\\.julia\\v0.6\\BigDates\\src",
+			"C:\\Users\\jas\\.julia\\v0.6\\TimeSeries2\\src",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl\\src",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl\\docs",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl\\src",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl\\src",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl\\src",
+			"C:\\Users\\jas\\Documents\\JAS\\FinWeb\\TimeSeries.jl"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"K<:Integer",
+			"K<:Signed",
+			"K<:",
+			"DNanoTime",
+			"Nano64",
+			"ΔNano64",
+			"Nano64",
+			"julia>",
+			"data::Vector{T}) where {T}",
+			"Use \"",
+			"\" instead.",
+			"string.jl:",
+			"\".",
+			"C:\\Users\\jas\\.julia\\v0.7\\ArbFloats\\src\\basics/",
+			"Base.Dates.",
+			"-Brooks",
+			"Brooks",
+			"References",
+			"INT",
+			"bitsizeof",
+			"Jan",
+			"BigDate",
+			"Dates",
+			"dnstime.value",
+			"\\.value",
+			"datetime",
+			"date",
+			"datime",
+			"time",
+			"NanoTime",
+			"Datime",
+			"Nanoseconds",
+			"Nanos",
+			"Nano",
+			"Base.Dates.rata",
+			"NANOS_",
+			"ClockTime",
+			"000\\)",
+			"1_",
+			"x.value\\)",
+			"Week",
+			"Day",
+			"Hour",
+			"Minute",
+			"Second",
+			"sec",
+			"WeekS",
+			"WEEK",
+			"DayS",
+			"DAY",
+			"HourS",
+			"HOUR",
+			"MinuteS",
+			"MINUTE",
+			"SecondS",
+			"SECOND",
+			"MillisecS",
+			"MILLISEC",
+			"MicrosecS",
+			"MICROSEC",
+			"NanosecS",
+			"NANOSEC",
+			"PicosecS",
+			"PICOSEC",
+			"FemtosecS",
+			"FEMTOSEC",
+			"AttosecS",
+			"ATTOSEC",
+			"ZeptosecS",
+			"ZEPTOSEC",
+			"SECS",
+			"DAY",
+			"HOUR",
+			"MINUTE",
+			"_FRAME",
+			"_UNIT",
+			"_FRAME",
+			"#",
+			"CardinalDicts",
+			"where K where V",
+			"where J where K where V",
+			"0.5",
+			",$",
+			"    ",
+			"\\n\"",
+			"\\n",
+			"    \"",
+			"\"#",
+			"BigTimer",
+			"timestampss",
+			"timestamp",
+			"timestamps",
+			"find_dupes",
+			"metadata::",
+			"metadata",
+			"meta",
+			"meta == nothing",
+			"timestampss",
+			"timestamp",
+			"timestamp[",
+			"timestampss",
+			"timestamp",
+			"timestamp[",
+			"timestamp)",
+			"timestamp,",
+			"timestamp[^s]",
+			"timestamps"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"K",
+			"NanoSpan",
+			"NanoTime",
+			"NanoSpan",
+			"",
+			"data::AbstractVector{T}) where T",
+			"",
+			"SysInt",
+			"bitsof",
+			"Date",
+			"DateTimes",
+			"dnstime.nanosec",
+			"nstime",
+			"Nano64",
+			"NanoTime",
+			"Nanosecond",
+			"rata",
+			"NANOSEC_",
+			"Clock",
+			"000\\)\\)",
+			"Int128(1_",
+			"x.value\\).value",
+			"Weeks",
+			"Days",
+			"Hours",
+			"Minutes",
+			"Seconds",
+			"secs",
+			"WEEKS",
+			"Week",
+			"DAYS",
+			"Day",
+			"HOURS",
+			"Hour",
+			"MINUTES",
+			"Minute",
+			"SECONDS",
+			"Second",
+			"MILLISECS",
+			"Millisec",
+			"MICROSECS",
+			"Microsec",
+			"NANOSECS",
+			"Nanosec",
+			"PICOSECS",
+			"Picosec",
+			"FEMTOSECS",
+			"Femtosec",
+			"ATTOSECS",
+			"Attosec",
+			"ZEPTOSECS",
+			"Zeptosec",
+			"_SECS",
+			"WEEK",
+			"DAY",
+			"HOUR",
+			"_TF",
+			"S",
+			"_",
+			"*",
+			"IFastSums",
+			"where {K,V}",
+			"where {J,K,V}",
+			"0.6",
+			"",
+			"     ",
+			"#",
+			"timestamps",
+			"metadata",
+			"timestamps",
+			"timestamps[",
+			"timestamps",
+			"timestamps[",
+			"timestamps)",
+			"timestamps,",
+			"timestamps"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/indicable.jl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1603,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Julia/Julia.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/saveTbis whukefir kater 00 it doe help,",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 57.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "CardinalDicts.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

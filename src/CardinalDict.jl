@@ -15,6 +15,7 @@ function CardinalPairDict(values1::Vector{T}, values2::Vector{T}) where T
     for i1 in 1:n1
         for i2 in 1:n2
             @inbounds dict[i] = values[i]
+        end
     end
     return dict
 end
