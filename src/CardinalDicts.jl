@@ -3,30 +3,34 @@ __precompile__()
 module CardinalDicts
 
 export  AbstractCardinalDict,
-        CardinalDict, CardinalPairDict,
-        clearindex!, keymax, isfull
-
-abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
-
-include("for_indexing.jl")
+        CardinalDict, CardinalPair, Cardinal\DictPair
+        clearindex!, keymax, is_full
+--
+@abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
 struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
-    idxmax::K
+
+    index_start::K    # smallest admissible index
+    index_endof::K    # largest  admissible index
+
+    first_index::K    # lowest  index that is nonempty
+    final_index::K    # highest index that is nonempty
 
     valued::BitArray{1}
     values::Vector{V}
 
-    function CardinalDict{V}(maxidx::K) where {K,V}
-        T = type_for_indexing(maxidx)
-        n = T(maxidx)
+    function CardinalDict{V}(maxentries::K) where {K,V}
+        T = type_for_indexing(maxentries)
+        indexmax = T(maxentries)
 
         valued = falses(n)
         values = Vector{V}(n)
-        return new{T,V}(idxmax, valued, values)
+        
+        return new{T,V}(indexmax, valued, values)
     end
 end
 
-length(cd::CardinalDict) = prod( cd.idxmax )
+
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
     idxmax::NTuple{2,K}
@@ -61,7 +65,9 @@ struct CardinalDictPair <: AbstractCardinalDict{K,V}
     end
 end
 
+include("indicable.jl")
 
+V
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
     idx1max::K
