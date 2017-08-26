@@ -34,6 +34,9 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     end
 end
 
+# Allow items_max to be given as a 1-Tuple (10_000,);
+# this provides multidim sizes a consistent interface.
+
 function CardinalDict{V}( items_max::NTuple{1,K}) where {K,V}
     return CardinalDict{V}( items_max )
 end
