@@ -1,4 +1,4 @@
-#=>
+##=>
      Julia can be yet more snappy when register-focused use
         (bitshifts, offsets) keeps counts in Int32 registers.
      Advantages are entirely system dependant, often found.
@@ -14,7 +14,6 @@ const SUN =
 
 bitsof(::Type{Int8})    = Int8(8)
 bitsof(::Type{Int16})   = Int16(16)
-bitsof(::Type{Int16})   = Int16(16)
 bitsof(::Type{Int32})   = Int32(32)
 bitsof(::Type{Int64})   = Int64(64)
 bitsof(::Type{Int128})  = Int128(128)
@@ -23,7 +22,7 @@ bitsof(::Type{UInt8})   = Int8(8)
 bitsof(::Type{UInt16})  = Int16(16)
 bitsof(::Type{UInt32})  = Int32(32)
 bitsof(::Type{UInt64})  = Int64(64)
-bitsof(::Type{Int128})  = Int128(128)
+bitsof(::Type{UInt128}) = Int128(128)
 
 bitsof(::Type{Float16}) = Int16(16)
 bitsof(::Type{Float32}) = Int32(32)
