@@ -2,30 +2,34 @@ __precompile__()
 
 module CardinalDicts
 
-export AbstractCardinalDict, CardinalDict, CardinalPairDict
+export  AbstractCardinalDict, CardinalDict, CardinalPairDict
+
+include("indicable.jl")
 
 abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
-type CardinalDict{K} 
+struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
 
-    index_start::  #  smallest admissible index  (jgh)
-    index_endof::  #  largest  admissible index  (ugg)
- 
+    first_index::K    #  lowest  index, currently nonempty
+    final_index::K    #  highest index, currently nonempty
+    index_start::K    #  smallest admissible index
+    index_endof::K    #  largest  admissible index
+
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
     function CardinalDict{V}(items_max::K) where {K,V}
-       
-        T = type_indexing(items_max)
-        
+
+        T = type_for_indexing(items_max)
+
         index_start, index_endof = one(T), T(items_max)
-        first_index, final_index = zero(T), zero(T) 
+        first_index, final_index = zero(T), zero(T)
 
         guards_gate = falses(items_max)
         keeps_value = Vector{V}(items_max)
-        
+
         return new{T,V}(first_index, final_index,
-                        index_start, index_endof, 
+                        index_start, index_endof,
                         guards_gate, keeps_value)
     end
 end
@@ -34,9 +38,8 @@ end
 # this provides multidim sizes a consistent interface.
 
 function CardinalDict{V}( items_max::NTuple{1,K}) where {K,V}
-    return CardinalDict{V}( items_max )
+    return CardinalDict{V}( items_max[1] )
 end
-
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
 
@@ -56,37 +59,34 @@ struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
     keeps_value::Vector{V}   #  indexable stores of value
 
     function CardinalPairDict{V}(dim_sizes::NTuple{2,K}) where {K,V}
-        
+
         size1, size2 = dim_sizes
-        items_max = size1 * size2        
+        items_max = size1 * size2
         T = type_for_indexing(items_max)
-        
+
         index_start1, index_endof1 = one(T), T(size1)
         index_start2, index_endof2 = one(T), T(size2)
-        
-        first_index1, final_index1 = zero(T), zero(T) 
-        first_index2, final_index2 = zero(T), zero(T) 
+
+        first_index1, final_index1 = zero(T), zero(T)
+        first_index2, final_index2 = zero(T), zero(T)
 
         guards_gate = falses(items_max)
         keeps_value = Vector{V}(items_max)
-        
+
         return new{T,V}(first_index1, final_index1,
-                        index1_start, index1_endof, 
+                        index1_start, index1_endof,
                         first_index2, final_index2,
-                        index2_start, index2_endof, 
+                        index2_start, index2_endof,
                         guards_gate,  keeps_value)
     end
 end
 
-function CardinalPairDict{V}(size::NTuple{2,K}) where {K,V}
-    return CardinalPairDict{V}( (size[1], size[2]) )
+function CardinalPairDict{V}(size1::K, size2::K) where {K,V}
+    return CardinalPairDict{V}( (size1, size2) )
 end
 
-
-
-include("cardinalkeys.jl")
-
-include("CardinalDict.jl")
-include("CardinalDict_api.jl")
+# include("cardinalkeys.jl")
+# include("CardinalDict.jl")
+# include("CardinalDict_api.jl")
 
 end # module
