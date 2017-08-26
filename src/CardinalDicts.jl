@@ -45,10 +45,17 @@ end
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
 
-    first_index::K    #  lowest  index, currently nonempty
-    final_index::K    #  highest index, currently nonempty
-    index_start::K    #  smallest admissible index
-    index_endof::K    #  largest  admissible index
+                       #  the xs of (x,y)
+    first_index1::K    #  lowest  index, currently nonempty
+    final_index1::K    #  highest index, currently nonempty
+    index1_start::K    #  smallest admissible index
+    index1_endof::K    #  largest  admissible index
+
+                       #  the ys of (x,y)
+    first_index2::K    #  lowest  index, currently nonempty
+    final_index2::K    #  highest index, currently nonempty
+    index2_start::K    #  smallest admissible index
+    index2_endof::K    #  largest  admissible index
 
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
@@ -59,23 +66,25 @@ struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
         items_max = size1 * size2        
         T = type_for_indexing(items_max)
         
-        index1start, index1_endof = one(T), T(size1)
-        index2start, index2_endof = one(T), T(size2)
+        index_start1, index_endof1 = one(T), T(size1)
+        index_start2, index_endof2 = one(T), T(size2)
         
-        first1index, final-_index = zero(T), zero(T) 
-        first2index, final2index = zero(T), zero(T) 
+        first_index1, final_index1 = zero(T), zero(T) 
+        first_index2, final_index2 = zero(T), zero(T) 
 
-        guards_gate = falses(itemsmax)
-        keeps_value = Vector{V}(itemsmax)
+        guards_gate = falses(items_max)
+        keeps_value = Vector{V}(items_max)
         
-        return new{T,V}(first_index, final_index,
-                        index_start, index_endof, 
-                        guards_gate, keeps_value)
+        return new{T,V}(first_index1, final_index1,
+                        index1_start, index1_endof, 
+                        first_index2, final_index2,
+                        index2_start, index2_endof, 
+                        guards_gate,  keeps_value)
     end
 end
 
-function CardinalDict{V}(maxentries::K) where {K,V}
-    return CardinalDict{V}( (maxentries,) )
+function CardinalDict{V}(size::NTuple{2,K}) where {K,V}
+    return CardinalDict{V}( (size[1], size[2]) )
 end
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
