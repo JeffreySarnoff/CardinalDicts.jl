@@ -6,16 +6,17 @@ export AbstractCardinalDict, CardinalDict, CardinalPairDict
 
 abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
 
-abstract type AbstractCardinal{K}()   #  highest index, currently nonempty
-    index_start::K    #  smallest admissible index  (jgh)
-    index_endof::K    #  largest  admissible index  (ugg)
+type CardinalDict{K} 
+
+    index_start::  #  smallest admissible index  (jgh)
+    index_endof::  #  largest  admissible index  (ugg)
  
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
     function CardinalDict{V}(items_max::K) where {K,V}
        
-        T = type_for_indexing(items_max)
+        T = type_indexing(items_max)
         
         index_start, index_endof = one(T), T(items_max)
         first_index, final_index = zero(T), zero(T) 
@@ -35,7 +36,6 @@ end
 function CardinalDict{V}( items_max::NTuple{1,K}) where {K,V}
     return CardinalDict{V}( items_max )
 end
-
 
 
 struct CardinalPairDict{K,V} <: AbstractCardinalDict{K,V}
