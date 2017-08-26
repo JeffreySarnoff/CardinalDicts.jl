@@ -2,28 +2,18 @@ __precompile__()
 
 module CardinalDicts
 
-
 export  AbstractCardinalDict, CardinalDict, CardinalPairDict
 
-
 abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
-
+abstract type AbstractCardinal{K}()   #  highest index, currently nonempty
+    index_start::K    #  smallest admissible index  (jgh)
+    index_endof::K    #  largest  admissible index  (ugg)
  
-
-@abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
-
-struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
-
-    first_index::K    #  lowest  index, currently nonempty
-    final_index::K    #  highest index, currently nonempty
-    index_start::K    #  smallest admissible index
-    index_endof::K    #  largest  admissible index
-
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
     function CardinalDict{V}(items_max::K) where {K,V}
-        
+       
         T = type_for_indexing(items_max)
         
         index_start, index_endof = one(T), T(items_max)
