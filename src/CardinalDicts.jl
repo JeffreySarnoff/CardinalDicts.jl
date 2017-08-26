@@ -5,6 +5,7 @@ module CardinalDicts
 export  AbstractCardinalDict, CardinalDict, CardinalPairDict
 
 abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
+
 abstract type AbstractCardinal{K}()   #  highest index, currently nonempty
     index_start::K    #  smallest admissible index  (jgh)
     index_endof::K    #  largest  admissible index  (ugg)
