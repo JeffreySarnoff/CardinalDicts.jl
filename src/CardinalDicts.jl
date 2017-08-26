@@ -18,9 +18,9 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
     guards_gate::BitVector   #  associable bistable states
     keeps_value::Vector{V}   #  indexable stores of value
 
-    function CardinalDict{V}(shape::NTuple{N,K}) where {N,K,V}
+    function CardinalDict{V}(size::NTuple{N,K}) where {N,K,V}
         
-        itemsmax = prod(shape)        
+        itemsmax = prod(size)        
         T = type_for_indexing(itemsmax)
         
         index_start, index_endof = one(T), T(itemsmax)
