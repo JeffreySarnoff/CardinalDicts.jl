@@ -3,7 +3,7 @@ __precompile__()
 module CardinalDicts
 
 export  AbstractCardinalDict,
-        CardinalDict, CardinalPair, Cardinal\DictPair
+        CardinalDict, CardinalPairDict,
         clearindex!, keymax, is_full
 
 @abstract type AbstractCardinalDict{K,V} <: Associative{K,V} end
