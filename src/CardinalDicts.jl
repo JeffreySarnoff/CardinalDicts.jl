@@ -10,14 +10,13 @@ export  AbstractCardinalDict,
 
 struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
 
-    index_start::K        #   smallest admissible index
-    index_endof::K        #   largest  admissible index
+    first_index::K    #  lowest  index, currently nonempty
+    final_index::K    #  highest index, currently nonempty
+    index_start::K    #  smallest admissible index
+    index_endof::K    #  largest  admissible index
 
-    first_index::K        #  lowest  currently nonempty index
-    final_index::K        #  highest currently nonempty index
-
-    gatesway::BitVector   #  associable bistable states
-    keepsval::Vector{V}   #  indexable stores of value
+    guards_gate::BitVector   #  associable bistable states
+    keeps_value::Vector{V}   #  indexable stores of value
 
     function CardinalDict{V}(maxentries::K) where {K,V}
         
@@ -25,12 +24,12 @@ struct CardinalDict{K,V} <: AbstractCardinalDict{K,V}
         index_start, index_endof = one(T), T(maxentries)
         first_index, final_index = zero(T), zero(T) 
 
-        gates_theway = falses(maxentries)
-        keeps_theval = Vector{V}(maxentries)
+        guards_gate = falses(maxentries)
+        keeps_value = Vector{V}(maxentries)
         
-        return new{T,V}(index_start,  index_endof, 
-                        first_index,  final_index,
-                        gates_theway, keeps_theval)
+        return new{T,V}(first_index, final_index,
+                        index_start, index_endof, 
+                        guards_gate, keeps_value)
     end
 end
 
