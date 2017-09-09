@@ -138,13 +138,6 @@ tenfold == eval(parse(string(tenfold)))
   define type Stringy that holds a string
   create a CardinalPairDict
       with paired indices (1:5, 1:4) that holds Stringy values
-  check length
-  confirm keymax
-  populate it
-  use it
-  unset an index
-  check it
-  reassign an indexable value
 =#
 
 using CardinalDicts
@@ -153,10 +146,7 @@ mutable struct Stringy
     value::String
 end
 value(x::Stringy) = x.value
-function value(x::Stringy, s::String)
-    x.value = s
-    return x
-end
+value(x::Stringy, s::String) = begin x.value = s end
 Base.:(==)(x::Stringy, y::Stringy) = value(x) == value(y)
 
 nrows = 5; ncols = 4; n = ncols*nrows
@@ -190,6 +180,7 @@ using CardinalDicts
 mutable struct Stringy
     value::String
 end
+
 value(x::Stringy) = x.value
 function value(x::Stringy, s::String)
     x.value = s
