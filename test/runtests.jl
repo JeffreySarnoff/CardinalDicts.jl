@@ -1,6 +1,6 @@
 using CardinalDicts
 using Base.Test
-import CardinalDictionaries: pair, unpair
+import CardinalDicts: pair, unpair
 
 #=
   create a CardinalDict 
