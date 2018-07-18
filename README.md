@@ -1,8 +1,10 @@
 # CardinalDicts.jl
-### Fast fixed-size dicts wth eraseable entries for keys that are or that map to sequential indicies.
+### Fast fixed-size dicts wth eraseable entries (values) for keys that are or map to sequential indicies.
 
-#### Copyright &copy;2017 by Jeffrey Sarnoff.  This material is made available under the MIT License.
-----------------------------------------------------------------
+----
+
+#### Copyright ©&thinsp;2018 by Jeffrey Sarnoff. &nbsp;&nbsp; This work is made available under The MIT License.
+--------
 
 
 ### Purpose
